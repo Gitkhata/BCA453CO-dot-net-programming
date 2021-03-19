@@ -1,0 +1,525 @@
+\chapter{Web Application}
+
+\section{Basic Concepts of Web Application Development}
+%https://en.wikipedia.org/wiki/Web_application
+A web application (or web app) is application software that runs on a web server, unlike software programs that are run locally on the operating system (OS) of the device. Web applications are accessed by the user through a web browser with an active internet connection. These applications are programmed using a client–server modeled structure—the user (``client") is provided services through an off-site server that is hosted by a third party. Examples of commonly-used web applications include: web-mail, online retail sales, online banking, and online auctions.
+
+%https://www.staticapps.org/articles/defining-static-web-apps/
+A Static Web Application is any web application that can be delivered directly to an end user's browser without any server-side alteration of the HTML, CSS, or JavaScript content. While this can encompass very flat, unchanging sites like a corporate web site, static web applications generally refer to rich sites that utilize technologies in the browser instead of on the server to deliver dynamic content.
+
+%https://stackoverflow.com/questions/42735947/difference-between-a-dynamic-web-application-and-a-normal-web-application#:~:text=A%20dynamic%20web%20application%20generates,when%20you%20click%20on%20follow.
+A dynamic web application generates the pages/data in real time, as per the request, a respective response will trigger from the server end and will reach the client end. Depending upon the response the client side code will take action as it's supposed to.
+
+
+
+\section{Implementing Session and Cookies}
+\subsection{Cookies}
+A cookie is a token that the Web server embeds in a user's Web browser to identify the user. The next time the same browser requests a page, it sends the cookie it received from the Web server. Cookies allow a set of information to be associated with a user. ASP scripts can both get and set the values of cookies by using the \texttt{Response.Cookies} {Collection collection} of the \textbf{Response} and \textbf{Request} objects. Once a cookie has been set, all page requests that follow return the cookie name and value. A cookie can only be read from the domain that it has been issued from. If a cookie contains a collection of multiple values, we say that the cookie has Keys.
+
+\noindent Note: \emph{The maximum cookie size is 4KB.}
+
+\subsubsection{Types of  Cookies}
+\begin{enumerate}
+	\item \textbf{Persistence Cookie}: Has an expiry time.
+	\item \textbf{Non-Persistence Cookie}: Maintains user information as long as the user accesses the same browser. It will be discarded when user closes the browser.
+\end{enumerate}
+
+\subsubsection{Set/Create Cookies}
+\begin{itemize}
+	\item To set the value of a cookie, use \verb*|Response.Cookies|
+	\item If the cookie does not already exist, \verb*|Response.Cookies| creates a new one
+	\item Cookie can have multiple values; such a cookie is called an indexed cookie.
+	\item The \verb*|Response.Cookies| command must appear before the \verb*|<html>| tag.
+\begin{lstlisting}
+<%
+	// create a cookie named 'semester' with the value '8'
+	Response.Cookies("semester")= 8
+	
+	// create a cookie named 'name' with the value 'Jeevan'
+	Response.Cookies("name")="Jeevan"
+	
+	// assign 'Expires' property to a cookie
+	Response.Cookies("name").Expires= "Jan 20,2021"
+%>
+\end{lstlisting}
+
+\subsubsection*{A Cookie with Keys}
+\begin{lstlisting}
+<%
+	/* create a cookie collection named 'student' */
+	Response.Cookies("student")("firstname")="Jeevan"
+	Response.Cookies("student")("lastname")="P"
+	Response.Cookies("student")("district")="Taplejung"
+%>
+\end{lstlisting}
+
+\end{itemize}
+
+\subsubsection{Get/Retrieve Cookies}
+\begin{itemize}
+\item The \verb*|Request.Cookies| command is used to retrieve a cookie value
+\item In the example below, we retrieve the value of the cookie named `name' and display it on a page:
+\begin{lstlisting}
+<%
+	name=Request.Cookies("name")
+	response.write("Name=" & name)
+	// output: Name=Jeevan
+%>
+\end{lstlisting}
+
+\lstinputlisting[caption=Reading all cookies]{CookiesExample.aspx}
+
+\end{itemize}
+
+
+\subsection{Session}
+The web server does not know who you are and what you do, because the HTTP address doesn't maintain state. 
+
+
+ASP solves this problem by creating a unique cookie for each user. The cookie is sent to the user's computer and it contains information that identifies the user. This interface is called the Session object. 
+
+The Session object stores information about, or change settings for a user session.
+
+Variables stored in a Session object hold information about one single user, and are available to all pages in one application. Common information stored in session variables are name, id, and preferences. The server creates a new Session object for each new user, and destroys the Session object when the session expires.
+
+A session starts when:
+
+\begin{itemize}
+	\item A new user requests an ASP file, and the Global.asa file includes a \verb*|Session_OnStart| procedure
+	\item A value is stored in a Session variable
+	\item A user requests an ASP file, and the \verb*|Global.asa| file uses the \verb*|<object>| tag to instantiate an object with session scope
+\end{itemize}
+A session ends if a user has not requested or refreshed a page in the application for a specified period. By default, this is 20 minutes.
+
+If you want to set a timeout interval that is shorter or longer than the default, use the Timeout property.
+
+The example below sets a timeout interval of 5 minutes:
+
+\begin{lstlisting}
+<%
+	Session.Timeout=5
+%>
+\end{lstlisting}
+
+Use the \verb*|Abandon| method to end a session immediately:
+\begin{lstlisting}
+<%
+	Session.Abandon
+%>
+\end{lstlisting}
+
+Note: The main problem with sessions is WHEN they should end. We do not know if the user's last request was the final one or not. So we do not know how long we should keep the session ``alive". Waiting too long for an idle session uses up resources on the server, but if the session is deleted too soon the user has to start all over again because the server has deleted all the information. Finding the right timeout interval can be difficult!
+
+\subsubsection*{Store and Retrieve Session Variables }
+The most important thing about the Session object is that you can store variables in it.
+
+The example below will set the Session variable username to ``Donald Duck" and the Session variable age to ``50":
+\begin{lstlisting}
+<%
+	Session("username")="Donald Duck"
+	Session("age")=50
+%>
+\end{lstlisting}
+When the value is stored in a session variable it can be reached from ANY page in the ASP application:
+\begin{lstlisting}
+Welcome <%Response.Write(Session("username"))%>
+\end{lstlisting}
+
+The line above returns: ``Welcome Donald Duck".
+
+You can also store user preferences in the Session object, and then access that preference to choose what page to return to the user.
+
+The example below specifies a text-only version of the page if the user has a low screen resolution: 
+\begin{lstlisting}
+<%If Session("screenres")="low" Then%>
+	This is the text version of the page
+<%Else%>
+	This is the multimedia version of the page
+<%End If%>
+\end{lstlisting}
+
+\subsubsection*{Remove Session Variables }
+The Contents collection contains all session variables.
+
+It is possible to remove a session variable with the Remove method.
+
+The example below removes the session variable ``sale" if the value of the session variable ``age" is lower than 18: 
+\begin{lstlisting}
+<%
+If Session.Contents("age")<18 then
+	Session.Contents.Remove("sale")
+End If
+%>
+\end{lstlisting}
+
+To remove all variables in a session, use the RemoveAll method: 
+\begin{lstlisting}
+<%
+	Session.Contents.RemoveAll()
+%>
+\end{lstlisting}
+
+\subsubsection*{Loop Through The Contents Collection}
+The Contents collection contains all session variables. You can loop through the Contents collection, to see what's stored in it:
+\begin{lstlisting}
+<%
+	Session("username")="Donald Duck"
+	Session("age")=50
+	
+	dim i
+	For Each i in Session.Contents
+	Response.Write(i & "<br>")
+	Next
+	
+	/*  output: 
+		username
+		age 
+	*/
+%>
+\end{lstlisting}
+If you do not know the number of items in the Contents collection, you can use the Count property:
+\begin{lstlisting}
+<%
+	dim i
+	dim j
+	j=Session.Contents.Count
+	Response.Write("Session variables: " & j)
+	For i=1 to j
+	Response.Write(Session.Contents(i) & "<br>")
+	Next
+	
+	/* output:
+		Session variables: 2
+		Donald Duck
+		50
+	*/	
+%>
+\end{lstlisting}
+
+\subsubsection*{Loop Through The StaticObjects Collection}
+You can loop through the StaticObjects collection, to see the values of all objects stored in the Session object:
+\begin{lstlisting}
+<%
+	dim i
+	For Each i in Session.StaticObjects
+	Response.Write(i & "<br>")
+	Next
+%>
+\end{lstlisting}
+\section{Client and Server Side Validation}
+Validation is a set of rules that you apply to the data you collect.
+These rules can be many or few and enforced either strictly or in a lax manner: It really depends
+on you. No perfect validation process exists because some users may find a way cheat to some
+degree, no matter what rules you establish. The trick is to find the right balance of the fewest rules
+and the proper strictness, without compromising the usability of the application. 
+
+The data you collect for validation comes from the Web forms you provide in your applications.
+Web forms are made up of different types of HTML elements that are constructed using raw
+HTML form elements, ASP .\ NET HTML server controls, or ASP .\ NET Web Form server controls. In the end, your forms are made up of many types of HTML elements, such as text boxes, radio
+buttons, check boxes, drop-down lists, and more.
+
+\subsection{Client Side Validation}
+Client-side validation is quick and responsive for the end user. It is something end users expect of the
+forms that they work with. If something is wrong with the form, using client-side validation ensures that
+the end user knows this as soon as possible. Client-side validation also pushes the processing power
+required of validation to the client meaning that you don’t need to spin CPU cycles on the server to process the same information because the client can do the work for you.
+
+With this said, client-side validation is the more insecure form of validation. When a page is generated in
+an end user’s browser, this end user can look at the code of the page quite easily (simply by right-clicking
+his mouse in the browser and selecting View Code). When he does this, in addition to seeing the HTML
+code for the page, he can also see all the JavaScript that is associated with the page. If you are validating
+your form client-side, it doesn’t take much for the crafty hacker to repost a form (containing the values he wants in it) to your server as valid. There are also the cases in which clients have simply disabled the
+client-scripting capabilities in their browsers - thereby making your validations useless. Therefore,
+client-side validation should be looked on as a convenience and a courtesy to the end user and never as
+a security mechanism
+
+
+\subsection{Server Side Validation}
+The more secure form of validation is server-side validation. Server-side validation means that the validation checks are performed on the server instead of on the client. It is more secure because these checks cannot be easily bypassed. Instead, the form data values are checked using server code ({\cs} or VB) on the server. If the form isn’t valid, the page is posted back to the client as invalid. Although it is more secure,
+server-side validation can be slow. It is sluggish simply because the page has to be posted to a remote
+location and checked. Your end user might not be the happiest surfer in the world if, after waiting 20
+seconds for a form to post, he is told his e-mail address isn’t in the correct format.
+
+The best approach is always to perform client-side validation first and then, after the form passes and is posted to the server, to perform the validation checks
+again using server-side validation This approach provides the best of both worlds. It is secure because
+hackers can’t simply bypass the validation. They may bypass the client-side validation, but they quickly
+find that their form data is checked once again on the server after it is posted. 
+
+\subsection{ASP .\ NET Validation Server Controls}
+In the classic ASP days, developers could spend a great deal of their time dealing with different form
+validation schemes. For this reason, with the initial release of ASP .\ NET, the ASP .\ NET team introduced a
+series of validation server controls meant to make it a snap to implement sound validation for forms.
+
+ASP .\ NET not only introduces form validations as server controls, but it also makes these controls rather
+smart. As stated earlier, one of the tasks of classic ASP developers was to determine where to perform
+form validation — either on the client or on the server. The ASP .\ NET validation server controls eliminate
+this dilemma because ASP .\ NET performs browser detection when generating the ASP .\ NET page and
+makes decisions based on the information it gleans.
+
+This means that if the browser can support the JavaScript that ASP .\ NET can send its way, the validation
+occurs on the client-side. If the client cannot support the JavaScript meant for client-side validation, this
+JavaScript is omitted and the validation occurs on the server.
+
+The best part about this scenario is that even if client-side validation is initiated on a page, ASP .\ NET still
+performs the server-side validation when it receives the submitted page, thereby ensuring security won’t
+be compromised. This decisive nature of the validation server controls means that you can build your
+ASP .\ NET Web pages to be the best they can possibly be.
+
+The available validation controls include:
+
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item RequiredFieldValidator
+		\item CompareValidator
+		\item RangeValidator
+		\item RegularExpressionValidator
+		\item CustomValidator
+		\item ValidationSummary
+	\end{enumerate}
+\end{multicols}
+
+
+The Table \ref{tab:validation-server-control} describes the functionality of each of the available validation server controls.
+
+
+\begin{table}[ht!]
+	\centering
+	\caption{Validation Server Controls.}\label{tab:validation-server-control}
+\begin{tabular}{p{5cm}p{7cm}}
+	\toprule
+	\textbf{Validation Server Control} & \textbf{Description} \\
+	\midrule
+	
+	\texttt{RequiredFieldValidator} 		& Ensures that the user does not skip a form entry field\\
+	
+	\texttt{CompareValidator}			& Allows for comparisons between the user’s input and another item using a comparison operator (equals, greater than, less than, and so on)\\
+	
+	\texttt{RangeValidator}				& Checks the user’s input based upon a lower- and upper level range of numbers or characters\\
+	
+	\texttt{RegularExpressionValidator} 	& Checks that the user’s entry matches a pattern defined by a regular expression. This is a good control to use to check e-mail addresses and phone numbers \\
+	
+	\texttt{CustomValidator} 			& Checks the user's entry using custom-coded validation logic\\
+	\texttt{ValidationSummary}			& Displays all the error messages from the validators in one specific spot on the page\\
+	\bottomrule	
+\end{tabular}
+\end{table}
+
+
+\subsubsection{The RequiredFieldValidator Server Control}
+\begin{itemize}
+	\item The \texttt{RequiredFieldValidator} control simply checks to see if something was entered into the HTML form
+	element. 
+	\item It is a simple validation control, but it is one of the most frequently used. 
+	\item You must have a \texttt{RequiredFieldValidator} control for each form element on which you wish to enforce a \textit{value-required} rule.
+	
+\end{itemize}
+
+\paragraph*{VB} Listing \ref{lst:required-field-validate} shows a simple use of the \texttt{RequiredFieldValidator} server control using VB.
+
+\lstinputlisting[style=vb, label={lst:required-field-validate}, caption=A simple use of the RequiredFieldValidator server control using VB.]{required-field-validate.aspx}
+
+\paragraph*{\cs}
+Listing \ref{lst:required-field-validate-cs} shows a simple use of the \texttt{RequiredFieldValidator} server control using \cs.
+\lstinputlisting[label={lst:required-field-validate-cs}, caption= A simple use of the RequiredFieldValidator server control using \cs.]{required-field-validate-cs.aspx}
+
+
+\subsubsection{The CompareValidator Server Control}
+\begin{itemize}
+	\item The \texttt{CompareValidator} control allows you to make comparisons between two form elements as well as
+	to compare values contained within form elements to constants that you specify. 
+	\item For instance, you can	specify that a form element’s value must be an integer and greater than a specified number. 
+	\item You can also state that values must be strings, dates, or other data types that are at your disposal.
+\end{itemize}
+
+\paragraph*{VB}
+Listing \ref{lst:compare-validator-vb} shows the use of \texttt{CompareValidator}.
+
+\lstinputlisting[style=vb, caption=Using the CompareValidator to test values against other control values, label={lst:compare-validator-vb}]{compare-validator-vb.aspx}
+
+\paragraph*{\cs}
+
+Listing \ref{lst:compare-validator-cs} shows the use of \texttt{CompareValidator} with \cs.
+\lstinputlisting[caption=Using the CompareValidator to test values against other control values with \cs, label={lst:compare-validator-cs}]{compare-validator-cs.aspx}
+
+\subsubsection{The RangeValidator Server Control}
+\begin{itemize}
+	\item The \texttt{RangeValidator} control is quite similar to that of the \texttt{CompareValidator} control, but it makes sure
+	that the end user value or selection provided is between a specified range as opposed to being just	greater than or less than a specified constant. 
+	\item For an example of this, go back to the text-box element that asks for the age of the end user and performs a validation on the value provided.
+\end{itemize}
+
+\begin{lstlisting}[numbers=none, caption=Using the RangeValidator control to test an integer value.]
+Age:
+<asp:TextBox ID="TextBox1" Runat="server"></asp:TextBox>
+&nbsp;
+<asp:RangeValidator ID="RangeValidator1" Runat="server"
+ControlToValidate="TextBox1" Type="Integer"
+ErrorMessage="You must be between 30 and 40"
+MaximumValue="40" MinimumValue="30"></asp:RangeValidator>
+\end{lstlisting}
+
+\paragraph*{VB}
+Listing \ref{lst:range-valid-date-vb} shows the use of \texttt{RangeValidator} control to test a string date value with VB.
+
+
+\lstinputlisting[style=vb, caption=Using the RangeValidator control to test a string date value with VB, label={lst:range-valid-date-vb}]{range-validator-date-vb.aspx}
+
+
+\paragraph*{\cs}
+Listing \ref{lst:range-valid-date-cs} shows the use of \texttt{RangeValidator} control to test a string date value with \cs.
+\lstinputlisting[caption=Using the RangeValidator control to test a string date value with \cs, label={lst:range-valid-date-cs}]{range-validator-date-cs.aspx}
+
+\subsubsection{The RegularExpressionValidator Server Control}
+\begin{itemize}
+	\item This control offers a lot of flexibility when you apply validation rules to your Web forms. 
+	\item Using the	\texttt{RegularExpressionValidator} control, you can check a user’s input based on a pattern that you define
+	using a regular expression.
+	\item This means that you can define a structure that a user’s input will be applied against to see if its structure matches the one that you define. \item For instance, you can define that the structure of the user input must be in the form of an e-mail address or an Internet \texttt{URL}; if it doesn't match this definition, the page
+	is considered invalid.
+\end{itemize}
+
+Listing {\ref{lst:regex-valid-email}} shows how to validate what is input into a text box by making sure it is in the form of an e-mail address.
+
+\lstinputlisting[caption=Making sure the text-box value is an e-mail address, label={lst:regex-valid-email}]{regex-valid-email.aspx}
+
+Just like the other validation server controls, the \texttt{RegularExpressionValidator} control uses the
+\texttt{ControlToValidate} property to bind itself to the \texttt{TextBox} control, and it includes an \texttt{ErrorMessage}
+property to push out the error message to the screen if the validation test fails. The unique property of
+this validation control is the \texttt{ValidationExpression} property. This property takes a string value,
+which is the regular expression you are going to apply to the input value.
+
+\subsubsection{The CustomValidator Server Control}
+\begin{itemize}
+	\item Validation controls described above are enough for us but if none of those works for us then we can use \textit{CustomValidator} control.
+	 \item The \texttt{CustomValidator} control allows you to build your own client-side or server-side validations that can then be easily applied to your Web forms. 
+	 \item Doing so allows you to make validation checks against values or calculations performed in the data tier (for example, in a database), or to make sure that the user's input validates against some arithmetic validation (for example, determining if a number is even or odd).
+\end{itemize}
+
+
+\paragraph*{Using Client Side Validation}
+\begin{itemize}
+	\item One of the worthwhile functions of the \texttt{CustomValidator} control is its capability to easily provide custom client-side validations. 
+	
+	\item Many developers have their own collections of JavaScript functions they employ in their applications, and using the \texttt{CustomValidator} control is one easy way of getting these functions implemented.
+	
+	\item For example, look at a simple form that asks for a number from the end user. 
+	\item This form uses the \texttt{CustomValidator} control to perform a custom client-side validation on the user input to make sure that the number provided is divisible by 5. 
+	\item This is illustrated in Listing {\ref{lst:custom-validator-client-vb}}.
+	
+\end{itemize}
+
+\subparagraph*{VB}
+Listing {\ref{lst:custom-validator-client-vb}} illustrates the CustomValidator control to perform client-side validations with VB.
+
+\lstinputlisting[
+	style=vb, 
+	caption={Using the CustomValidator control to perform client-side validations with VB.}, label={lst:custom-validator-client-vb}
+]{custom-validator-client-vb.aspx}
+
+\subparagraph*{\cs}
+Listing {\ref{lst:custom-validator-client-cs}} illustrates the CustomValidator control to perform client-side validations with \cs.
+
+\lstinputlisting[
+	caption={Using the CustomValidator control to perform client-side validations with \cs.}, label={lst:custom-validator-client-cs}
+]{custom-validator-client-cs.aspx}
+
+Looking over this Web form, you can see a couple of things happening. First, it is a simple form with
+only a single text box requiring user input. The user clicks the button that triggers the \texttt{Button1\_Click}
+event that, in turn, populates the Label1 control on the page. It carries out this simple operation only if
+all the validation checks are performed and the user input passes these tests.
+
+\paragraph*{Using Server-Side Validation}
+\begin{itemize}
+	\item Now let’s move this same validation check from the client to the server. 
+	\item The \texttt{CustomValidator} control allows you to make custom server-side validations a reality as well. 
+	
+	\item \texttt{CustomValidator} for server-side validations is something you do if you want to check the user’s input against dynamic values coming from XML files, databases, or elsewhere.
+	
+	\item For an example of using the \texttt{CustomValidator} control for some custom server-side validation, you can work with the same example as you did when creating the client-side validation. 
+	\item Now, create a server-side check that makes sure a user-input number is divisible by 5. 
+	\item This is illustrated in Listing {\ref{lst:custom-validator-server-vb}} and {\ref{lst:custom-validator-server-cs}}.
+\end{itemize}
+
+
+\subparagraph*{VB}
+Using the CustomValidator control to perform server-side validations with VB.
+\lstinputlisting[
+style=vb,
+caption={Using the CustomValidator control to perform server-side validations with VB.}, label={lst:custom-validator-server-vb}
+]{custom-validator-server-vb.aspx}
+
+
+
+\subparagraph*{{\cs}}
+Using the CustomValidator control to perform server-side validations with \cs.
+\lstinputlisting[
+	caption={Using the CustomValidator control to perform server-side validations with \cs.}, label={lst:custom-validator-server-cs}
+]{custom-validator-server-cs.aspx}
+
+Instead of a client-side JavaScript function in the code, this example includes a server-side function — \texttt{ValidateNumber}. The \texttt{ValidateNumber} function, as well as all functions that are being constructed to
+work with the \texttt{CustomValidator} control, must use the \texttt{ServerValidateEventArgs} object as one of the
+parameters in order to get the data passed to the function for the validation check. The \texttt{ValidateNumber}
+function itself is nothing fancy. It simply checks to see if the provided number is divisible by 5.
+
+\subsubsection{The ValidationSummary Server Control}
+\begin{itemize}
+	\item The \texttt{ValidationSummary} control is not a control that performs validations on the content input into your Web forms. 
+	\item Instead, this control is the reporting control, which is used by the other validation controls on a page. 
+	\item You can use this validation control to consolidate error reporting for all the validation errors
+	that occur on a page instead of leaving this up to each and every individual validation control.
+	\item By default, the \texttt{ValidationSummary} control shows the list of validation errors as a bulleted list. 
+	\item This is illustrated in Listing {\ref{lst:validation-summary}}.
+\end{itemize}
+
+\lstinputlisting[
+language=html,
+caption={A partial page example of the ValidationSummary control.}, label={lst:validation-summary}
+]{validation-summary.aspx}
+
+This example asks the end user for her first and last name. Each text box in the form has an associated
+\texttt{RequiredFieldValidator} control assigned to it. When the page is built and run, if the user clicks the
+Submit button with no values placed in either of the text boxes, it causes both validation errors to fire.
+
+As in earlier examples of validation controls on the form, these validation errors appear next to each of
+the text boxes. You can see, however, that the \texttt{ValidationSummary} control also displays the validation
+errors as a bulleted list in red at the location of the control on the Web form. In most cases, you do not
+want these errors to appear twice on a page for the end user.
+
+
+\section{Building Web Application}
+\subsection*{Hosting}
+
+\subsection*{Internet Information Services (IIS)}
+%Internet Information Services (IIS) is a flexible, general-purpose web server from Microsoft that runs on Windows systems to serve requested HTML pages or files.
+%
+%An IIS web server accepts requests from remote client computers and returns the appropriate response. This basic functionality allows web servers to share and deliver information across local area networks (LAN), such as corporate intranets, and wide area networks (WAN), such as the internet.
+%
+%A web server can deliver information to users in several forms, such as static webpages coded in HTML; through file exchanges as downloads and uploads; and text documents, image files and more.
+
+Stands for “Internet Information Services”. IIS is a web server software package designed for Windows Server. It is used for hosting websites and other content on the Web.
+
+Microsoft’s Internet Information Services provides a graphical user interface (GUI) for managing websites and the associated users. It provides a visual means of creating, configuring, and publishing sites on the web. The IIS Manager tool allows web administrators to modify website options, such as default pages, error pages, logging settings, security settings, and performance optimizations.
+
+IIS can serve both standard HTML webpages and dynamic webpages, such as ASP .\ NET applications and PHP pages. When a visitor accesses a page on a static website, IIS simply sends the HTML and associated images to the user’s browser. When a page on a dynamic website is accessed, IIS runs any applications and processes any scripts contained in the page, then sends the resulting data to the user’s browser.
+
+While IIS includes all the features necessary to host a website, it also supports extensions (or “modules”) that add extra functionality to the server. For example, the WinCache Extension enables PHP scripts to run faster by caching PHP processes. The URL Rewrite module allows webmasters to publish pages with friendly URLs that are easier for visitors to type and remember. A streaming extension can be installed to provide streaming media to website visitors.
+
+IIS is a popular option for commercial websites, since it offers many advanced features and is supported by Microsoft. However, it also requires requires a commercial license and the pricing increases depending on the number of users. Therefore, Apache HTTP Server, which is open source and free for unlimited users, remains the most popular web server software.
+
+\subsubsection*{Features of IIS}
+
+\paragraph*{Application pools}
+ Application pools form an important part of an IIS server system. An individual application pool could have zero or many IIS worker processes running. These worker processes are responsible for running application instances.
+
+
+
+\paragraph*{Authentication}
+IIS server features authentication options, including Windows auth, Basic, and ASP .\ NET. If you use Windows Active Directory, Windows auth is especially useful, because it lets you sign in to web apps automatically via your domain account.
+
+\paragraph*{Security}
+IIS comes with security features, like utilities for managing TLS certificates, binding so SFTP and HTTPS can be enabled, and the ability to filter requests so you can effectively whitelist and blacklist traffic. You can implement authorization and permission rules and log requests and access a suite of FTP security functions.
+
+\paragraph*{Remote management}
+Remote management utilities allow IIS to be managed through the CLI or via PowerShell. You can create the script yourself, which many IT administrators value because it offers ultimate flexibility and control.
+
+\newpage\thispagestyle{empty}

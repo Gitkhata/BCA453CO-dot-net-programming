@@ -1,0 +1,209 @@
+\documentclass[a4paper, twoside, 12pt, noanswers]{exam}
+
+
+% \documentclass[a4paper, 12pt, answers]{exam}
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\usepackage{dirtytalk}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{multicol}
+\usepackage{framed}
+\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\setdefaultlanguage{english} 
+
+
+\setotherlanguage{hindi} 
+\newfontfamily\devanagarifont[Script=Devanagari]{Shobhika} %fonts-> Shobhika, Mukta, Kalimati, Lohit Devanagari, Lohit Nepali
+\defaultfontfeatures{Ligatures=TeX}
+
+\newcommand{\textnp}{\texthindi}
+\newenvironment{nepali}{\begin{hindi}}{\end{hindi}}
+\newcommand{\cs}{C\texttt{\#}}
+
+
+\usepackage[onehalfspacing]{setspace}
+\usepackage{graphicx}
+\usepackage{multicol,adjustbox}
+
+% \pointsinrightmargin %points in right margin
+% \bracketedpoints
+
+\nopointsinmargin %removes points from margin
+\pointformat{} 
+
+\unframedsolutions %do not show frame outside of solution
+
+
+\CorrectChoiceEmphasis{\bfseries\boldmath} 
+\renewcommand{\thepartno}{\alph{partno}} 
+\renewcommand{\thesubpart}{(\roman{subpart})}
+\renewcommand{\subpartlabel}{\thesubpart} 
+\renewcommand{\choicelabel}{(\alph{choice})}
+
+\thispagestyle{empty}
+
+\cfoot[]{}
+\clearpage
+
+\begin{document}
+
+%%%%%%Purbanchal University-2018%%%%%%
+% 									 %															
+%				2018				 %
+%									 %
+%%%%%%Purbanchal University-2018%%%%%%
+\begin{framed}
+	\raggedright{\bfseries\Large\centering PURBANCHAL UNIVERSITY \par {2018/ \textnp{२०७५}}\par}
+	{ 4 Years Bachelor of Computer Application (BCA/Eighth Semester/Final)\par}
+	{ Time: 3.00 hrs.  \hfill Full Marks: 60 / Pass Marks: 24\par}
+	{\bfseries {BCA453CO, Dot Net Programming\hfill}\par}
+\end{framed}
+
+{\noindent \it{Candidates are required to give their own answers in their own words as far as practicable.  }\par}
+{\noindent \it{Figure in the margin indicate full marks.}\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%				GROUP   A	
+{\fullwidth{\centering \bfseries \underline{Group A}}}
+{\hspace*{-0.5cm} \bfseries Answer TWO questions.} \hfill {\( \mathbf{2\times 12 =24}\)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+
+	\question What are the components of NET framework? How do you implement
+	OOP in \cs? Explain with example.
+
+	\question What is ADO.NET? Explain ADO.NET architecture. Write a
+	program to insert, delete and update employee records (Name,
+	Age, Address, and Basic Salary) in database with proper
+	validation. 2+4+6
+
+	\question
+	\begin{parts}
+		\part What is hosting? Write about IIS Web Server and its features
+		\part What is the use of data bound control in web application? Give
+		example.
+	\end{parts}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%				GROUP   B					
+	{\fullwidth{\centering \bfseries \underline{Group B}}\par}
+	{\hspace*{-0.5cm}\noindent\bfseries Answer SIX questions.} \hfill {\( \mathbf{6 \times 6 = 36}\)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\question What are feature of VB.net? Explain event handling in \cs with
+	example.
+
+	\question What is a constructor? How do you overload methods in
+	VB.NET?
+
+	\question What do you mean by concurrency control? How is concurrency
+	control resolved and maintained in ADO.NET? Explain with
+	example.
+
+	\question Write a program to demonstrate the use of smart tags.
+
+	\question Explain data grid control used in .NET programming with
+	example.
+
+	\question Write a VB.NET client application and incorporate the necessary
+	validations.
+
+	\question Write notes on any TWO:
+	\begin{parts}
+		\part Cross language architecture
+		\part Namespace
+		\part .NET class libraries
+	\end{parts}
+
+\end{questions}
+\newpage
+
+
+%%%%%%Purbanchal University-2019%%%%%%
+% 									 %															
+%				2019				 %
+%									 %
+%%%%%%Purbanchal University-2019%%%%%%
+
+\begin{framed}
+	\raggedright{\bfseries\Large\centering PURBANCHAL UNIVERSITY \par {2019/ \textnp{२०७६}}\par}
+	{ 4 Years Bachelor of Computer Application (BCA/Eighth Semester/Final)\par}
+	{ Time: 3.00 hrs.  \hfill Full Marks: 60 / Pass Marks: 24\par}
+	{\bfseries {BCA453CO, Dot Net Programming \hfill}\par}
+\end{framed}
+
+{\noindent \it{Candidates are required to give their own answers in their own words as far as practicable.  }\par}
+{\noindent \it{Figure in the margin indicate full marks.}\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\fullwidth{\centering \bfseries \underline{Group A}}}
+{\hspace*{-0.5cm} \bfseries Answer TWO questions.} \hfill {\( \mathbf{2\times 12 =24}\)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+	\question Describe Architecture of NET Framework. Explain Just in Time
+	compilation of managed code.
+	\question What do you mean by polymorphism? Describe with its types and
+	example.
+	\question Write a program for Electricity Bill Statement (EBS). The EBS
+	takes units consumed from consumer and calculates; Electricity
+	Charges (EC) using provided criteria:
+	\begin{subparts}
+		\subpart Units less than 100  Rs 500 minimum charge.
+		\subpart Units 100 above 300 below Rs 15 (per unit + minimum
+		charge).
+		\subpart Units above 300 Rs 25 (per unit + minimum charge).
+	\end{subparts}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	{\fullwidth{\centering \bfseries \underline{Group B}}\par}
+	{\hspace*{-0.5cm}\noindent\bfseries Answer SIX questions.} \hfill {\( \mathbf{6 \times 6 = 36}\)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\question What is the difference between a class and an object, and how do
+	these terms relate to each other? Explain briefly with examples?
+	\question List different features of .\ NET Technology. What does `managed
+	code' means in .\ NET context?
+	\question What are the difference between Radio Button control and Check
+	Box control? Explain with an example.
+	\question Why do we use String Builder in place of String in \cs .\ NET? Differentiate between string and String Builder.
+	\question Explain ADO.NET, its features and architecture.
+	\question Print the following pattern:
+
+	\begin{mbox}
+		\raggedright
+		2\\
+		3	5\\
+		7	11	13	\\
+		17	19	23	29\\
+		31	37	41	43	47\\
+	\end{mbox}
+
+	\question What is array? Explain types of array with example.
+
+	\question Write notes on any TWO:
+	\begin{parts}
+		\part Base Class Library
+		\part Boxing and Unboxing
+		\part Inheritance
+	\end{parts}
+
+
+% \nomorequestions
+
+\end{questions}
+\afterpage{\blankpage}
+\end{document}

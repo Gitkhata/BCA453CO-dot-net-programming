@@ -1,0 +1,316 @@
+\chapter{Essentials of Object–oriented Programming}
+
+\section{Object and Class Definition Working}
+
+\subsection{Class}
+A class is a group of different data members or objects with the same properties, processes, events of an object, and general relationships to other member functions. Furthermore, we can say that it is like a template or architect that tells what data and function will appear when it is included in a class object. For example, it represents the method and variable that will work on the object of the class.
+
+\subsection*{Class Creation}
+\subsubsection*{{\cs}}
+\begin{lstlisting}
+// Syntax of class creation in C#	
+access_modifier class class_name {
+	// fields
+}
+\end{lstlisting}
+
+\subsubsection*{VB}
+We can create a class using the \texttt{Class} keyword, followed by the class name. And the body of the class ended with the statement \texttt{End Class}. 
+
+\begin{lstlisting}[style=vb]
+[Access_Specifier] [Shadows] [MustInherit | NotInheritable] [Partial] Class ClassName
+	' Data Members
+	' Methods
+	' Statements
+End Class
+\end{lstlisting}
+
+Where,
+\begin{itemize}
+	\item 
+	\texttt{Access\_Specifier}: It defines the access levels of the class, such as Public, Private or Friend, Protected, Protected Friend, etc. to use the method. (It is an optional parameter).
+	\item \texttt{Shadows}: It is an optional parameter. It represents the re-declaration of variables and hides an identical element name or set of overloaded elements in a base class.
+	\item \texttt{MustInherit}: It is an optional parameter that specifies that the class can only be used as a base class, and the object will not directly access the base class or the abstract class.
+	\item \texttt{NotInheritable}: It is also an optional parameter that representing the class not being used as a base class.
+	\item \texttt{Partial}: As the name defines, a Partial represents the partial definition of the class (optional).
+	
+	\item \texttt{Implements}: It is used to specify interfaces from which the class inherits (optional).
+\end{itemize}
+
+\subsection{Object}
+Objects are the basic run-time units of a class. Once a class is defined, we can create any number of objects related to the class to access the defined properties and methods. 
+
+Synatx:
+
+\begin{lstlisting}[style=vb]
+	Dim Obj_Name As Class_Name = New Class_Name() ' Declaration of object
+	Obj_Name.Method_Name() 'Access a method
+\end{lstlisting}
+
+An object is basically a block of memory that has been allocated and configured according to the blueprint. A program may create many objects of the same class. Objects are also called instances, and they can be stored in either a named variable or in an array or collection. Client code is the code that uses these variables to call the methods and access the public properties of the object. In an object-oriented language such as {\cs}, a typical program consists of multiple objects interacting dynamically. Because classes are reference types, a variable of a class object holds a reference to the address of the object on the managed heap. If a second object of the same type is assigned to the first object, then both variables refer to the object at that address.
+
+Instances of classes are created by using the new operator. In the following example, \texttt{Person} is the type and \texttt{person1} is instances, or object, of that type.
+
+\lstinputlisting[caption=Example of class using {\cs}]{class-example.cs}
+
+\lstinputlisting[caption=Example of class using VB]{ClassExampleVB.vb}
+
+
+\section{Understanding Identity, State and Behavior}
+All objects have three essential features:
+
+\begin{multicols}{3}
+\begin{enumerate}
+	\item State
+	\item Behavior
+	\item Identity
+\end{enumerate}
+\end{multicols}
+
+
+\subsection*{States}
+\textit{States} are the conditions in which objects exist. An object's state is defined by its
+attributes. An object's attributes are usually static, and the values of the attributes are
+usually dynamic.
+
+\subsection*{Behavior}
+The term \textit{behavior} refers to how objects interact with each other, and it is defined by the
+operations an object can perform.
+
+\subsection*{Identity}
+\textit{Identity} is an uniqueness of an object from other objects. No matter what its attributes and operations are, an object is always uniquely itself. It retains its identity regardless of changes to its state or behavior.
+
+Together, state and behavior define the roles that an object may play. And an object may play many roles during its lifetime.
+
+For example, an object in the bank's Employee class could be involved with the payroll
+system, with the customer database, or with the command hierarchy.
+
+The functions you require an object to perform are its responsibilities. And an object's responsibilities are fulfilled by its roles — by its state and behavior combined.
+
+So, you can capture all the meaningful functionality of an object by specifying its state and behavior. Objects are characterized by a third feature in addition to state and behavior —
+identity.
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}[c]{@{}p{6cm}p{6cm}@{}}
+	\caption{Comparison between class and object}
+	\label{tab:class-object}\\
+	\toprule
+	\textbf{Object}        & \textbf{Class}  \\* \midrule
+	\endfirsthead
+	%
+	\multicolumn{2}{c}%
+	{{\bfseries Table \thetable\ continued from previous page}} \\
+	\toprule
+	Object                                                                                                                       & Class                                                                                                         \\* \midrule
+	\endhead
+	%
+	Object is an instance of a class  & Class is a blueprint or template from which objects are created  \\
+	Object is a real world entity   & Class is a group of similar objects                                                                         \\
+	Object is a physical entity   & Class is a logical entity                                                                                  \\
+	Object is created through \texttt{new} keyword  mainly \lstinline|Student student=new Student();| & Class is declared using \texttt{class} keyword \lstinline|class Student{}| \\
+Object is created  many times as per requirement    & Class is declared once \\
+Object allocates memory when it is created     & Class doesn't allocated memory when it is created  \\
+\bottomrule            
+\end{longtable}
+
+
+\section{Using Encapsulation to Combine Methods and Data in a Single Class}
+Encapsulation is the first pillar or principle of object-oriented programming. In simple words, ``Encapsulation is a process of binding data members (variables, properties) and
+member functions (methods) into a single unit”. And Class is the best example of encapsulation.
+
+\subsection*{Important points}
+\begin{itemize}
+	\item Through encapsulation a class can hide the internal details of how an object does
+	something. Encapsulation solves the problem at the implementation level.
+	
+	\item A class or structure can specify how accessible each of its members (variables,
+	properties, and methods) are from outside the class or structure. Encapsulation
+	simplifies the interaction between objects. An object can use another object without
+	knowing all its data or how its data is maintained. For example, a Client object might
+	have name, address, company, and department properties. If a Bank object wants
+	to use a Client object, it can request the name and address for the bank without
+	needing to know the company and department details of the Client object.
+	
+	\item With the help of encapsulation, a class can change the internal implementation
+	without hurting the overall functionality of the system.
+	
+	\item Encapsulation protects abstraction.
+\end{itemize}
+
+
+\subsection*{Need or purpose of encapsulation}
+\begin{itemize}
+	\item To hide and prevent code (data) from the outside world (here the world means other
+	classes and assemblies).
+	
+	\item To prevent code (data) from accidental corruption due to programming errors so
+	that we can deliver expected output. Due to programming mistakes, code may not
+	behave properly and it has an effect on data and then it will affect the functionality of
+	the system. With encapsulation, we can make variables, properties, and methods
+	private so it is not accessible to all but accessible through proper channels only to
+	protect it from accidental corruption from other classes.
+	
+	\item To have a class better control over its fields (validating values etc).
+\end{itemize}
+
+\subsection*{Ways to achieve encapsulation with code example}
+
+We can achieve encapsulation by the following ways. Take a look at the methods to
+achieve encapsulation with code example:
+
+\subsubsection*{By using the get and set methods (Accessors and Mutators)}
+\begin{lstlisting}[caption=Encapsulation using get and set methods]
+public class Account {
+	private string accoutName;
+	// get methods
+	public string GetAccount() {
+		return accoutName;
+	}
+	// Set method
+	public void SetAccount(string name) {
+		accoutName = name;
+	}
+}
+static void Main() {
+	string name = "SAVING_ACCOUNT";
+	Account account = new Account();
+	account.SetAccount(name);
+	name = string.Empty;
+	name = account.GetAccount();
+}
+\end{lstlisting}
+
+In the above example we use the get and set methods (\texttt{GetAccount} and \texttt{SetAccount})
+to return account and set account name. We use the private variable \texttt{accountName} and
+as it is not accessible directly, to use this variable, we use the get and set methods.
+
+\subsubsection*{By using properties (read only properties, write only properties)}
+Like the above example we can also achieve encapsulation using properties . We can use
+a property (which has a get and set part), or we can use a read only property (which has
+only a get part) or we can also use a write only property (which has only a set part). But in
+all cases we can achieve encapsulation.
+
+Have a look at the following example using properties.
+
+\lstinputlisting[caption=Encapsulation using properties]{encapsulation-prop.cs}
+
+Here, when we create a new instance of the account class, all the private variables in the
+account class (account name, address, and phone) are assigned with values. In the main
+class we can skip the variables (name, address, and phone) and directly
+use \texttt{System.Console} to write the output.
+
+\subsubsection*{Using an interface}
+
+\begin{lstlisting}[numbers=none]
+IAccount myAccount = new AsianAccount();
+IAccount myAccount = new EuropeanAccount();
+IAccount myAccount = new USAAccount();
+\end{lstlisting}
+
+Now, based on the current location (for which we can have variables), whenever we want
+to view the balance information of a specific account, we can use the \texttt{IAccount} interface
+and we can see how \texttt{AsianAccount}, \texttt{EuropeanAccount}, and \texttt{USAAccount} hide
+information from each other, getting the balance details through the \texttt{IAccount} interface.
+
+\section{Inheritance and Polymorphism With Interface}
+\subsection*{Inheritance}
+Inheritance is a process in which one object acquires all the properties and behaviors of its parent object automatically. 
+
+ The class which inherits the members of another class is called derived class and the class whose members are inherited is called base class.
+ 
+ \subsubsection*{Syntax}
+ \begin{lstlisting}
+<acess-specifier> class <base_class> {
+ 		...
+ }
+ 	
+class <derived_class> : <base_class> {
+ 		...
+}
+ \end{lstlisting}
+
+\subsubsection*{Example}
+\lstinputlisting[caption=Example of inheritance]{InheritanceExample.cs}
+
+ 
+\subsection*{Interface}
+Interface is a blueprint of a class. It is like abstract class because all the methods which are declared inside the interface are abstract methods. It cannot have method body and cannot be instantiated.
+
+It is used to achieve multiple inheritance which can't be achieved by class. It is used to achieve fully abstraction because it cannot have method body.
+
+Its implementation must be provided by class or struct. The class or struct which implements the interface, must provide the implementation of all the methods declared inside the interface.
+
+
+Following example show the use of interface which has \texttt{draw()} method. Its implementation is provided by two classes: Rectangle and Circle.
+\lstinputlisting[caption= Example of interface]{InterfaceExampleCS.cs}
+
+\subsection*{Polymorphism}
+There are two types of polymorphism in: 
+\begin{itemize}
+	\item Compile time polymorphism
+	
+	Compile time polymorphism is achieved by method overloading and operator overloading. It is also known as static binding or early binding. 
+	
+	\item Runtime polymorphism
+	
+	Runtime polymorphism in achieved by method overriding which is also known as dynamic binding or late binding.
+\end{itemize}
+
+
+
+
+
+\subsection{Inheritance With Interface}
+Polymorphism is often referred to as the third pillar of object-oriented programming, after
+encapsulation and inheritance. Polymorphism is a Greek word that means ``many form'' and it has two distinct aspects:
+
+\begin{itemize}
+	\item At run time, objects of a derived class may be treated as objects of a base class.
+	\item Base classes may define and implement virtual methods, and derived classes
+	can override them, which means they provide their own definition and implementation. At run-time, when client code calls the method, the CLR looks up
+	the run-time type of the object, and invokes that override of the virtual method.
+\end{itemize}
+
+Virtual methods enable you to work with groups of related objects in a uniform way. For
+example, suppose you have a drawing application that enables a user to create various
+kinds of shapes on a drawing surface. You do not know at compile time which specific
+types of shapes the user will create. However, the application has to keep track of all the
+various types of shapes that are created, and it has to update them in response to user
+mouse actions. You can use polymorphism to solve this problem in two basic steps:
+
+\begin{itemize}
+	\item Create a class hierarchy in which each specific shape class derives from a
+	common base class
+	\item Use a virtual method to invoke the appropriate method on any derived class
+	through a single call to the base class method.
+\end{itemize}
+
+First, create a base class called \texttt{Shape}, and derived classes such
+as Rectangle, Circle, and Triangle. Give the Shape class a virtual method
+called Draw, and override it in each derived class to draw the particular shape that the
+class represents. Create a \texttt{List<Shape>} object and add a Circle, Triangle and Rectangle
+to it. To update the drawing surface, use a foreach loop to iterate through the list and call
+the Draw method on each Shape object in the list. Even though each object in the list has
+a declared type of Shape, it is the run-time type (the overridden version of the method in
+each derived class) that will be invoked.
+
+\lstinputlisting[caption= Example of inheritance with polymorphism]{polymorph-inherit.cs}
+
+\subsection*{Inheritance With Interface}
+We can implement the interface for those classes where behavior is same but
+definitions are different to achieve polymorphism. For example, We are having 3
+classes — Human, Fish and Car, Practically, these Human, Fish and Car can move but way/
+definition of moving is not identical.
+
+\subsubsection*{Benefits}
+\begin{itemize}
+	\item We are clearly able to group by the fact that they share common behavior.
+	\item You need only single list to hold movable object, not multiple list of each type of object.
+\end{itemize}
+
+\lstinputlisting[caption= Example of inheritance with interface]{polymorph-interface.cs}
+\newpage\thispagestyle{empty}

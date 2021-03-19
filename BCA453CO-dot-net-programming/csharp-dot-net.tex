@@ -1,0 +1,80 @@
+% !TeX spellcheck = en_GB
+% !TEX TS-program = xelatex 
+
+\documentclass[a4paper, 12pt, twoside, openright, titlepage]{book}
+\sloppy %break line going past margin
+\usepackage{./dot-net-book-style} %this is the custom style with preamble
+
+%\usepackage[margin=1in]{geometry} %options: showframe
+
+
+%\includeonly{
+%	./chapters/chapter-1,
+%	./chapters/chapter-2, 
+%	./chapters/chapter-3, 
+%	./chapters/chapter-4,
+%	./chapters/chapter-5,
+%	./chapters/chapter-6,
+%	./chapters/chapter-7,
+%}
+
+\begin{document}
+
+
+\frontmatter
+
+%-----------------------------------------
+%		Title page
+%-----------------------------------------
+\include{./titlepage/title-page}\thispagestyle{empty}
+
+\tableofcontents \newpage\thispagestyle{empty}
+
+%-----------------------------------------
+%		TOC
+%-----------------------------------------
+\listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \newpage \thispagestyle{empty}
+
+\listoftables\addcontentsline{toc}{chapter}{List of Tables} \newpage \thispagestyle{empty}
+
+
+\mainmatter
+
+%-----------------------------------------						  
+%		Include Chapters here		  	  									  
+%-----------------------------------------
+
+%-----------------------------------------
+\include{./chapters/chapter-1} % ch-1: Overview of VB .\ NET and C\# .\ NET Language
+\include{./chapters/chapter-2} % ch-2: Language Basics
+\include{./chapters/chapter-3} % ch-3: Developing Console Application
+\include{./chapters/chapter-4} % ch-4: Essentials of Object – Oriented Programming
+\include{./chapters/chapter-5} % ch-5: Windows Forms and Standard Components
+\include{./chapters/chapter-6} % ch-6: Data Access with ADO .\ NET
+\include{./chapters/chapter-7} % ch-7: Web Application
+%-----------------------------------------
+
+
+
+%-----------------------------------------
+%		Questions
+%-----------------------------------------
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Questions (2018 \& 2019)}
+\include{./chapters/questions}
+
+
+\backmatter
+
+%-----------------------------------------
+%		References
+%-----------------------------------------
+ \nocite{*}
+ \renewcommand{\bibname}{References}
+ \phantomsection
+ \addcontentsline{toc}{chapter}{References}
+ \printbibliography 
+ 
+
+\end{document}

@@ -1,0 +1,857 @@
+\chapter{ Language Basics}
+\section{Variables and Data Types}
+\subsection{Variables}
+%https://www.javatpoint.com/csharp-variables
+%{\cs} Variable
+
+A variable is a name of memory location. It is used to store data. Its value can be changed and it can be reused many times. It is a way to represent memory location through symbol so that it can be easily identified. The basic variable type available in {\cs} can be categorized as:
+
+
+	\begin{table}[hb]
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable Type} & \textbf{Example}                 \\ \midrule
+			Decimal types          & decimal                          \\
+			Boolean types          & True or false value, as assigned \\
+			Integral types         & int, char, byte, short, long     \\
+			Floating point types   & float and double                 \\
+			Nullable types         & Nullable data types              \\ \bottomrule
+		\end{tabular}
+	\end{table}
+
+%https://www.tutorialspoint.com/csharp/csharp_variables.htm
+%{\cs} - Variables
+{\cs} also allows defining other value types of variable such as \verb|enum| and reference types of variables such as \verb|class|.
+
+\subsubsection*{Variable Declaration in {\cs}}
+Syntax for variable definition in {\cs} is:
+\begin{lstlisting}[numbers=none]
+	<data_type> <variable_list>;
+\end{lstlisting}
+
+Here, \verb|data_type| must be a valid {\cs} data type including char, int, float, double, or any user-defined data type, and \verb|variable_list| may consist of one or more identifier names separated by commas.
+
+Some valid variable definitions are shown here:
+\begin{lstlisting}[numbers=none]
+int i, j, k;
+char c, ch;
+float f, salary;
+double d;
+\end{lstlisting}
+
+\subsubsection*{Variable Declaration in VB .\ NET}
+The \texttt{Dim} statement is used for variable declaration and storage allocation for one or more variables. The Dim statement
+is used at \textit{module}, \textit{class}, \textit{structure}, \textit{procedure} or \textit{block level}.
+Syntax for variable declaration in VB .\ Net is:
+\begin{lstlisting}[style=vb, numbers=none]
+	DIM <variable_name> As <data_type>
+\end{lstlisting}
+
+Some valid variable declarations along with their definition are shown here:
+\begin{lstlisting}[style=vb, numbers=none]
+' VB
+Dim StudentID As Integer
+Dim StudentName As String
+Dim Salary As Double
+Dim count1, count2 As Integer
+Dim status As Boolean
+Dim exitButton As New System.Windows.Forms.Button
+Dim lastTime, nextTime As Date
+\end{lstlisting}
+
+\subsubsection*{Variable Initialization}
+Variables are initialized (assigned a value) with an equal sign followed by a constant expression. The general form of initialization is:
+
+\begin{lstlisting}[numbers=none]
+variable_name = value;
+\end{lstlisting}
+
+Variables can be initialized in their declaration. The initializer consists of an equal sign followed by a constant expression as:
+
+\begin{lstlisting}[style=vb, numbers=none]
+' C#
+<data_type> <variable_name> = value;
+
+' VB
+DIM <variable_name> As <data_type> = value
+\end{lstlisting}
+
+Variable can be initialized at the time of declaration as follows:
+\begin{lstlisting}[numbers=none]
+// C#
+string studentName = "Jeevan";
+\end{lstlisting}
+
+\begin{lstlisting}[style=vb, numbers=none]
+' VB
+Dim semesterID As Integer = 8
+Dim teacherName As String = "Madan Uprety"
+\end{lstlisting}
+\subsubsection*{Rules for defining variables}
+\begin{itemize}
+	\item A variable can have alphabets, digits and underscore.
+
+	\item A variable name can start with alphabet and underscore only. It can't start with a digit.
+
+	\item No white space is allowed within variable name.
+
+	\item A variable name must not be any reserved word or keyword e.g. char, float etc.
+\end{itemize}
+
+Some examples are:
+\begin{lstlisting}[numbers=none]
+// C#
+int semesterId = 8, rollNo = 69;
+byte x = 22;
+double pi = 3.14159;
+char name = `x';
+\end{lstlisting}
+
+\subsection{Data Types}
+%Mithun Kumar & jit_t
+%https://www.geeksforgeeks.org/c-sharp-data-types/
+%{\cs} | Data Types
+%GeeksforGeeks
+
+Data types specify the type of data that a valid {\cs} variable can hold. {\cs} is a strongly typed programming language because in {\cs}, each type of data (such as integer, character, float, and so forth) is predefined as part of the programming language and all constants or variables defined for a given program must be described.
+
+\subsubsection*{Value Data Types}
+
+%	https://www.geeksforgeeks.org/c-sharp-data-types/
+%	Mithun Kumar & jit_t
+%	{\cs} | Data Types
+	In {\cs}, the Value Data Types will directly store the variable value in memory and it will also accept both signed and unsigned literals. The derived class for these data types are \verb|System.ValueType|
+
+
+	\subsubsection*{ Reference Data Type}
+
+	The reference types do not contain the actual data stored in a variable, but they contain a reference to the variables.
+
+	In other words, they refer to a memory location. Using multiple variables, the reference types can refer to a memory location. If the data in the memory location is changed by one of the variables, the other variable automatically reflects this change in value. Example of built-in reference types are: object, dynamic, and string.
+
+		\paragraph*{Object Type}
+
+		In {\cs}, all types, predefined and user-defined, reference types and value types, inherit directly or indirectly from Object. So basically it is the base class for all the data types. Before assigning values, it needs type conversion. When a variable of a value type is converted to object, it’s called boxing. When a variable of type object is converted to a value type, it’s called unboxing. Its type name is \verb|System.Object|.
+
+
+\paragraph*{String Type}
+It represents a sequence of Unicode characters and its type name is \texttt{System.String}. So, \texttt{string} and \texttt{String} are equivalent. Example:
+		\begin{lstlisting}
+// creating through string keyword
+	string s1 = "Corona";
+
+// creating through String class
+	String s2 = "COVID-19";
+\end{lstlisting}
+
+ \paragraph*{Dynamic Type}
+	You can store any type of value in the dynamic data type variable. Type checking for these types of variables takes place at run-time.
+
+\begin{lstlisting}
+// Syntax
+	dynamic <variable_name> = value;
+
+// Example
+	dynamic d = 69;
+\end{lstlisting}
+
+Dynamic types are similar to object types except that type checking for object type variables takes place at compile time, whereas that for the dynamic type variables takes place at run time.
+
+
+\subsubsection*{Pointer Type}
+%	https://www.tutorialspoint.com/csharp/csharp_data_types.htm
+%	{\cs} - Data Types
+
+	Pointer type variables store the memory address of another type. To get the pointer details we have a two symbols: ampersand (\&) and asterisk (*).
+
+\begin{itemize}
+		\item 	ampersand (\&): It is Known as Address Operator. It is used to determine the address of a variable.
+
+		\item 	asterisk (*): It also known as Indirection Operator. It is used to access the value of an address.
+
+\begin{lstlisting}[numbers=none]
+// Syntax
+	type* identifier;
+
+// Example
+	int* p1, p;   // Valid syntax
+	int *p1, *p;   // Invalid
+\end{lstlisting}
+
+
+\end{itemize}
+
+
+
+
+\section{String and String Builder}
+%Mithun Kumar
+%GeeksforGeeks
+%{\cs} | String
+%https://www.geeksforgeeks.org/c-sharp-string/
+%accessed 27 april 2020
+\subsection{String}
+ String is a sequence of Unicode characters or array of characters. The array of characters is also termed as the text. So the string is the representation of the text.
+
+ A string is represented by class \verb|System.String|. The \verb|string| keyword is an alias for \verb|System.String| class and instead of writing \verb|System.String| one can use \verb|String| which is a shorthand for \verb|System.String| class. So, we can say \verb|string| and \verb|String| both can be used as an alias of \verb|System.String |class. So \verb|string| is an object of \verb|System.String |class.
+
+ \begin{lstlisting}[numbers=none]
+ // Example:
+
+ // creating the string using string keyword
+ string courseName = "BCA";
+
+ // creating the string using String class
+ String semester = "Semester-VIII";
+
+ // creating the string using String class
+ System.String calenderYearNP ="2077 B.S.";
+ \end{lstlisting}
+
+The String class is defined in the \verb|.NET| base class library. In other words a String object is a sequential collection of \verb|System.Char| objects which represents a string. The maximum size of String object in memory is 2GB or about 1 billion characters. \verb|System.String| class is \textbf{immutable}, i.e once created its state cannot be altered.
+
+\subsubsection*{String Class Properties}
+The String class has two properties as follows:
+\begin{itemize}
+	\item Chars: It is used to get the Char object at a specified position in the current String object.
+	\item Length: It is used to get the number of characters in the current String object.
+\end{itemize}
+
+\subsection{String Builder}
+
+A string instance is immutable. Immutable means once we create a string object we cannot modify the value of the string Object in the memory. Any operation that appears to modify the string, it will discard the old value and it will create new instance in memory to hold the new value.
+
+The \texttt{System.Text.StringBuilder} is mutable, that means once we create \texttt{StringBuilder} object we can perform any operation that appears to change the value without creating new instance for every time. It can be modified in any way and it doesn't require creation of new instance.
+
+\begin{lstlisting}
+// String Example
+
+string colors;
+colors += "red";
+colors += "blue";
+colors += "green";
+\end{lstlisting}
+
+In the above code, string color will alter 3 times, each time the code perform a string operation \verb|(+=)|. That mean 3 new string created in the memory. When you perform repeated operation to a string, the overhead associated with creating a new String object can be costly.
+
+\begin{lstlisting}
+// StringBuilder Example
+
+StringBuilder sb = new StringBuilder("");
+sb.Append("red");
+sb.Append("blue");
+sb.Append("green ");
+string colors = sb.ToString();
+\end{lstlisting}
+
+In the above code the \texttt{StringBuilder} object will alter 3 times, each time the code attempt a \texttt{StringBuilder} operation without creating a new object. That means, using the \texttt{StringBuilder} class can boost performance when concatenating many strings together in a loop.
+
+But immutable objects have some advantages also, such as they can be used across threads without fearing synchronization problems. On the other hand, when initializing a \texttt{StringBuilder}, you are going down in performance. Also many actions that you do with string can't be done with \texttt{StringBuilder} object.
+
+	\begin{table}[ht]
+	\centering
+	\caption{Differences between String and StringBuilder class}\label{tab:string-vs-string-builder}
+	\begin{tabular}{p{5.5cm}p{5.5cm}}
+	\toprule % <-- Toprule here
+		\textbf{String} & \textbf{StringBuilder} \\
+		\midrule % <-- Midrule here
+		\texttt{System.String} is immutable  &
+		\texttt{System.StringBuilder} is mutable \\
+	
+Concatenation is used to combine two strings & Append method is used\\
+
+ The first string is combined to the other string by creating a new copy in the memory as a string object, and then the old string is deleted
+  & Insertion is done on the existing string. \\
+
+  \texttt{String} is efficient for small string manipulation & \texttt{StringBuilder} is more efficient in case large amounts of string manipulations have to be performed \\
+	  \bottomrule %% <-- Bottomrule here
+	\end{tabular}
+	\end{table}
+
+
+\section{Boxing and Unboxing}
+
+{\cs} Type System contains three Types, they are:
+\begin{itemize}
+	\item Value Types,
+	\item Reference Types and
+	\item Pointer Types.
+\end{itemize}
+{\cs} allows us to convert a Value Type to a Reference Type, and back again to Value Types. The operation of Converting a Value Type to a Reference Type is called \textbf{Boxing} and the reverse operation is called \textbf{Unboxing}.
+
+\subsection{Boxing}
+\begin{lstlisting}
+int Val = 1;
+Object Obj = Val; //Boxing
+\end{lstlisting}
+
+The first line we created a Value Type \texttt{Val} and assigned a value to Val. The second line, we created an instance of \texttt{Object Obj} and assign the value of Val to Obj. From the above operation \verb|Object Obj = i| we saw converting a value of a Value Type into a value of a corresponding Reference Type. These types of operation is called Boxing.
+
+\subsection{UnBoxing}
+\begin{lstlisting}
+int Val = 1;
+Object Obj = Val; //Boxing
+int i = (int)Obj; //Unboxing
+\end{lstlisting}
+
+The first two line shows how to Box a Value Type. The next line int \texttt{i = (int) Obj} shows extracts the Value Type from the Object. That is converting a value of a Reference Type into a value of a Value Type. This operation is called UnBoxing.
+
+Boxing and UnBoxing are computationally expensive processes. When a value type is boxed, an entirely new object must be allocated and constructed, also the cast required for UnBoxing is also expensive computationally.
+
+	\begin{table}[h]
+	\centering
+	\caption{Difference between boxing and unboxing.}\label{tab:boxing-vs-unboxing}
+	\begin{tabular}{p{5.5cm}p{5.5cm}}
+  \toprule
+		\textbf{Boxing} & \textbf{Unboxing} \\
+		\midrule
+		It convert value type into an object type.  & It convert an object type into value type. \\
+		Boxing is an implicit conversion process. & Unboxing is the explicit conversion process.\\
+		Here, the value stored on the stack copied to the object stored on the heap memory. & Here, the object stored on the heap memory copied to the value stored on the stack . \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Operators}
+An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations. {\cs} has rich set of built-in operators and provides the following type of operators.
+
+
+\subsection{Arithmetic Operators}
+The arithmetic operators perform arithmetic operations on all the numeric type operands such as sbyte, byte, short, ushort, int, uint, long, ulong, float, double, and decimal.
+
+\begin{table}[htb!]
+	\centering
+	\begin{tabular}{p{0.8cm} p{6cm}p{3cm}}
+		\toprule
+		Operator     & Description                                                 & Example                    \\ \midrule
+		\texttt{+}   & Adds two operands                                           & \texttt{int x = 30 + 6;}   \\
+		\texttt{-}   & Subtracts second operand from the first                     & \texttt{int x = 70 - 1; }  \\
+		\texttt{*}   & Multiplies both operands                                    & \texttt{int x = 4 * 9;}    \\
+		\texttt{/}   & Divides numerator by denominator                            & \texttt{int x = 138 / 2;}  \\
+		\texttt{\%}  & Modulus Operator and remainder of after an integer division & \texttt{int x = 69 \% 36;} \\
+		\texttt{++}  & Increment operator increases integer value by one           & \texttt{x++;}              \\
+		\texttt{x--} & Decrement operator decreases integer value by one           & \texttt{x--;}              \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Relational Operators}
+Relational operators are used to check the relationship between two operands. If the relationship is true the result will be \verb|true|, otherwise it will result in \verb|false|. Relational operators are used in decision-making and loops. Table {\ref{tab:comparison-operator}} shows list of comparison operators.
+
+\begin{table}[ht!]
+	\centering
+	\caption{Comparison Operators.}\label{tab:comparison-operator}
+	\begin{tabular}{p{1cm}p{3.5cm}p{5cm}}
+		\toprule
+		\textbf{Operator}     & \textbf{Name}                     & \textbf{Example}  \\ \midrule
+		\texttt{==}  & Equal to                 & \texttt{6 == 4} evaluates to false  \\
+		\texttt{>}   & Greater than             & \texttt{3 > -1} evaluates to true   \\
+		\texttt{< }  & Less than                & \texttt{5 < 3} evaluates to false   \\
+		\texttt{>=}  & Greater than or equal to & \texttt{4 >= 4} evaluates to true   \\
+		\texttt{<= } & Less than or equal to    & \texttt{5 <= 3} evaluates to false  \\
+		\texttt{!=}  & Not equal to             & \texttt{10 != 2} evaluates to true  \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Logical Operators}
+Logical operators are used to perform logical operation such as and, or. Logical operators operates on boolean expressions (true and false) and returns boolean values. Logical operators are used in decision-making and loops. Table {\ref{tab:logical-operator}} shows list of logical operators.
+
+\begin{table}[hb]
+	\centering
+	\caption{Logical Operators.}\label{tab:logical-operator}
+\begin{tabular}{p{1cm}p{6cm}p{3cm}}
+	\toprule
+	Operator      & Description                                                                                                  & Example            \\ \midrule
+	\texttt{\&\&} & Computes the logical AND of its bool operands. Returns true both operands are true, otherwise returns false. & \texttt{x \&\& y}; \\
+	\texttt{||}     & Computes the logical OR of its bool operands. Returns true when any one operand is true.                     & \texttt{x || y};    \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Compound Assignment Operators}
+	 The assignment operator \texttt{=} assigns its right-hand value to its left-hand variable, property, or indexer. It can also be used with other arithmetic, Boolean logical, and bitwise operators. Table {\ref{tab:compound-assignment-operator}} shows list of compound assignment operators.
+	 \begin{table}[ht]
+	 	\centering
+	 	\caption{Compound Assignment Operators.}\label{tab:compound-assignment-operator}
+	 \begin{tabular}{p{4cm}p{3cm}p{3cm}}
+	 	\toprule
+	 	Operator & Example  & Same As    \\ \midrule
+	 	=        & x = 6    & x = 6      \\
+	 	+=       & x += 4   & x = x + 4  \\
+	 	-=       & x -= 6   & x = x - 6  \\
+	 	*=       & x *= 9   & x = x * 9  \\
+	 	/=       & x /= 7   & x = x / 7  \\
+	 	\%=      & x \% = 2 & x = x \% 2 \\ \bottomrule
+	 \end{tabular}
+	 \end{table}
+
+
+\subsection{Ternary Operator}
+The ternary operator \verb|? :| operates on three operands. It is a shorthand for if-then-else statement.
+
+\begin{lstlisting}[numbers=none]
+// Syntax: ternary operator
+variable = Condition? Expression1 : Expression2;
+\end{lstlisting}
+
+The ternary operator works as follows:
+\begin{itemize}
+	\item If the expression stated by Condition is \verb|true|, the result of \verb|Expression1| is assigned to variable
+	\item If it is \verb|false|, the result of \verb|Expression2| is assigned to variable
+\end{itemize}
+
+\begin{lstlisting}[numbers=none]
+// Example
+int number = 18;
+string result;
+
+result = (number % 2 == 0)? "Even Number" : "Odd Number";
+\end{lstlisting}
+
+\section{Control statements}
+Program needs a way to make decisions as it makes progress through the execution of code. This is where control flow comes into play. The program control flow is provided to us by the use of control statements. These are the special keywords in the {\cs} language that allow the programmer to set up things like branching, looping, and even entire jumps to new points in the program during execution.
+Control statements:
+\begin{itemize}
+	\item \textbf{Selection Statements}: This consists of \verb|if|, \verb|else|, \verb|switch|, and \verb|case| branching
+
+	\item \textbf{Iteration Statements}: This consists of \verb|do|, \verb|for|, \verb|foreach|, and \verb|while| looping
+
+	\item \textbf{Jump Statements}: This consists of \verb|break|, \verb|continue|, \verb|return|, and \verb|goto| statements
+\end{itemize}
+
+\subsection{Conditional Statements}
+A conditional statement decides whether to execute code based on conditions. The if statement and the switch statement are the two types of conditional statements in {\cs}.
+
+\subsection{{\cs}}
+\subsubsection*{if statement}
+The if statement selects a branch for execution based on the value of a Boolean expression.
+\begin{lstlisting}[numbers=none]
+// C#
+// Syntax: if statement
+if (condition) {
+// Statement(s)
+} else {
+// Statement(s)
+}
+\end{lstlisting}
+
+The if statement evaluates its condition expression to determine whether to execute the if-body. Optionally, an else clause can immediately follow the if body, providing code to execute when the condition is false. Making the else-body another if statement creates the common cascade of \verb|if, else if, else if, else if, else| statements.
+
+\subsubsection*{switch statement}
+Switch statement can be used to branch the execution of a program to a set of statements that are inside of a case label, which is created with the keyword \verb|case|. The {\cs} switch statement does this by matching the value inside the switch against the values that you specify in each case label.
+
+\begin{itemize}
+	\item Restricted to integers, characters, strings, and enums
+	\item Case labels are constants
+	\item Default label is optional
+\end{itemize}
+
+\begin{lstlisting}[numbers=none]
+// Syntax: switch statement
+switch (expression) {
+case value1:
+// statements
+	break;
+
+case value2:
+// statements
+	break;
+.
+.
+case valueN:
+// statements
+	break;
+default:
+// default statement
+}
+\end{lstlisting}
+
+\subsection{VB}
+
+\subsubsection*{If ... Then Statement}
+\begin{lstlisting}[style=vb, numbers=none]
+' VB Syntax: if ... then statement
+If (condition) Then
+	' Statement(s)
+End IF
+\end{lstlisting}
+
+\subsubsection{If ... Then ... Else Statement}
+An If statement can be followed by an optional Else statement, it executes when the Boolean expression is false.
+\begin{lstlisting}[style=vb, numbers = none]
+If (boolean_expression) Then
+	'execute if Boolean expression is true
+Else
+	'execute if Boolean expression is false
+End If
+\end{lstlisting}
+
+\subsubsection{If ...  ElseIf ... Else Statement}
+An If statement can be followed by an optional Else if...Else statement, which is very useful to test various conditions using single If...Else If statement.
+\begin{lstlisting}[style=vb, numbers=none]
+' Syntax for if... else if ... else
+If(boolean_expression 1)Then
+	' Executes when the boolean expression 1 is true
+ElseIf( boolean_expression 2)Then
+	' Executes when the boolean expression 2 is true
+ElseIf( boolean_expression 3)Then
+	' Executes when the boolean expression 3 is true
+Else
+	' Executes when the none of the above condition is true
+End If
+\end{lstlisting}
+
+\subsubsection{Nested If Statement}
+It is always legal in VB.Net to nest If-Then-Else statements, which means you can use one If or ElseIf statement inside another If ElseIf statement(s).
+
+\begin{lstlisting}[style=vb, numbers=none]
+If(boolean_expression 1)Then
+ 	'Executes when the boolean expression 1 is true
+		If(boolean_expression 2)Then
+			'Executes when the boolean expression 2 is true
+		End If
+End If
+\end{lstlisting}
+
+
+\subsubsection{Select Case Statement}
+A Select Case statement allows a variable to be tested for equality against a list of values. Each value is called a case, and the variable being switched on is checked for each select case.
+\begin{lstlisting}[style=vb, numbers=none]
+' VB: Syntax: Select Case
+Select (expression)
+	Case case1
+		'statements
+	Case caseN
+		'statements
+	Case Else
+		'statements
+End Select
+\end{lstlisting}
+
+\subsection*{Loops in VB}
+\subsubsection*{Do loop}
+It repeats the enclosed block of statements while a Boolean condition is True or until the condition becomes True. It could be terminated at any time with the Exit Do statement.
+
+\begin{lstlisting}[style=vb, numbers = none]
+' Syntax: sDo loop	
+Do (While | Until) (condition)
+	' statements
+	' Continue Do
+	' statements 
+	' Exit Do 
+	' statements
+	Loop
+	' -or-
+Do
+	 'statements
+	' Continue Do
+	' statements 
+	' Exit Do 
+	' statements
+	Loop (While | Until ) (condition)
+\end{lstlisting}
+
+
+\subsection{Iteration statements}
+An iteration statement creates a loop of code to execute a variable number of times. Iterating is also known as looping. Looping is when you need or want to execute a piece of code many times. The \verb|for| loop, the \verb|do| loop, the \verb|while| loop, and the \verb|foreach| loop are the iteration statements in {\cs}.
+
+\subsubsection{do ... while loop}
+The \verb|do...while| loop always runs its body once. After its first run, it evaluates its condition to determine whether to run its body again. If the \verb|condition| is true, the body executes. If the condition evaluates to true again after the body has run, the body executes again. When the condition evaluates to false, the \verb|do...while| loop ends.
+\begin{lstlisting}[numbers=none]
+// Syntax: do ... while loop
+do {
+	statement;
+} while (condition);
+\end{lstlisting}
+
+\subsubsection{for loop}
+For loop repeats the execution of a statement until a specified \verb|condition| is false. It proves most useful when the developer knows the exact number of necessary iterations. Its statements initialize the iteration variable, state the related condition, and state the iteration operation. Note that all statements within a for statement are optional, and omissions can create infinite loops.
+
+\begin{lstlisting}[numbers=none]
+// Syntax: for loop
+for (initialization; condition; iterator) {
+	statement;
+}
+\end{lstlisting}
+
+\subsubsection{foreach loop}
+The \verb|foreach| statement is similar to the for statement in that both allow code to iterate over the items of collections, but the foreach statement lacks an iteration index, so it works even with collections that lack indices altogether. When the collection is fully traversed, the loop will terminate.
+\begin{lstlisting}[numbers=none]
+// Syntax: foreach loop
+foreach(int element in collection) {
+	statement;
+}
+\end{lstlisting}
+
+
+\subsubsection{while}
+The while loop executes a statement(s) while a condition evaluates to true.
+\begin{lstlisting}[numbers=none]
+// Syntax: while loop
+while (statement) {
+statement;
+}
+\end{lstlisting}
+
+\subsection{Jump statements}
+ Jump statements are used to transfer control from one point to another point in the program. There are five keywords in the Jump Statements: \texttt{break, continue, goto, return and throw}
+
+
+\subsubsection*{break statement}
+The break statement is used to terminate the loop or statement in which it present. After that, the control will pass to the statements that present after the break statement, if available. If the break statement present in the nested loop, then it terminates only those loops which contains break statement.
+
+\subsubsection*{continue statement}
+This statement is used to skip over the execution part of the loop on a certain condition. After that, it transfers the control to the beginning of the loop. Basically, it skips its following statements and continues with the next iteration of the loop.
+
+\subsubsection*{goto statement}
+This statement is used to transfer control to the labeled statement in the program. The label is the valid identifier and placed just before the statement from where the control is transferred.
+
+\subsubsection*{return statement}
+This statement terminates the execution of the method and returns the control to the calling method. It returns an optional value. If the type of method is void, then the return statement can be excluded.
+
+\subsubsection*{throw statement}
+This is used to create an object of any valid exception class with the help of \verb|new| keyword manually. The valid exception must be derived from the Exception class.
+
+
+\section{Arrays and Strings}
+
+Arrays represent a set of items all belonging to the same type. The declaration itself may use a variable or a constant to define the length of the array. However, an array has a set length and it cannot be changed after declaration.
+
+\subsection{Array Declaration}
+The syntax for declaring an array follows:
+
+\begin{lstlisting}[numbers=none]
+// Syntax
+datatype[] arrayName;
+\end{lstlisting}
+Where,
+\begin{itemize}
+	\item \texttt{datatype}: defines the element type of the array
+	\item \texttt{[]}: defines the size of the array
+	\item \texttt{arrayName}: is the Name of array
+\end{itemize}
+
+\begin{lstlisting}[numbers=none]
+// Example
+int[] totalCount; // can store int values
+string[] affectedCountries; // can store string values
+double[] economicLoss; // can store double values
+CoronaVirus[] covid19; // can store instances of CoronaVirus class which is a custom class
+\end{lstlisting}
+\emph{Only Declaration of an array doesn’t allocate memory to the array. For that array must be initialized.}
+
+\subsection{Array Initialization}
+An array is a reference type so the \verb|new| keyword used to create an instance of the array. We can assign initialize individual array elements, with the help of the index.
+
+\begin{lstlisting}[numbers=none]
+// Syntax:
+datatype[] arrayName= new datatype[size];
+\end{lstlisting}
+Where,
+\begin{itemize}
+	\item \texttt{datatype}: specifies the type of data being allocated
+	\item \texttt{size}: specifies the number of elements in the array
+	\item \texttt{arrayName}: is the name of array variable
+	\item \texttt{new}: allocates memory to an array according to its size
+\end{itemize}
+
+
+\begin{lstlisting}[numbers=none]
+ // different ways of array declaration and initialization
+
+// define array without assigning value
+int[] year = new int[4];
+
+// define array and assign value at the same time
+int[] year = new int[4] {2074, 2075, 2076, 2077};
+
+// defining array with elements
+// that indicates the size of an array
+int[] year = {2074, 2075, 2076, 2077};
+\end{lstlisting}
+
+
+\noindent Arrays are categorized as one-dimensional, multi-dimensional, or jagged. In the creation of an array, its number of dimensions and their length are set.
+
+\subsubsection*{One Dimensional Array}
+This array contains only one row for storing the values. All values of this array are stored contiguously starting from 0 to the array size.
+\begin{lstlisting}[numbers=none]
+//Syntax: 1-D array declaration
+double[] xx = new double[69];
+\end{lstlisting}
+
+
+\subsubsection*{Multidimensional Arrays}
+The multi-dimensional array contains more than one row to store the values. It is also known as a \textbf{Rectangular Array} in {\cs} because it’s each row length is same. It can be a 2D-array or 3D-array or more. Nested loop is required inorder to access multidimensional array.
+\begin{lstlisting}[numbers=none]
+// creates a two-dimensional array of
+// four rows and three columns.
+int[, ] arrayName = new int[4, 3];
+
+//creates an array of three dimensions, 5, 3, and 2
+int[, , ] arrayName = new int[5, 3, 2];
+
+ // one comma indicates 2-dimensional
+ // and two commas indicate 3-dimensional.
+\end{lstlisting}
+
+
+\subsubsection*{Jagged Arrays}
+A jagged array is an array whose elements are themselves arrays, not all necessarily of the same length. This is declared in the format
+
+\begin{lstlisting}[numbers=none]
+//jagged array declaration
+datatype[][] arrayName
+\end{lstlisting}
+\noindent where, we have \verb|[][]| instead of \verb|[,]|.\\
+
+\noindent Example,
+
+\begin{lstlisting}[numbers=none]
+// Example
+int[][] Jag = new int[3][];
+\end{lstlisting}
+
+ \noindent \break Before you can use Jag, its elements must be initialized. You can initialize the elements like this:
+\begin{lstlisting}[numbers=none]
+Jag[0] = new int[5]; // array of 5 integers
+Jag[1] = new int[4]; // array of 4 integers
+Jag[2] = new int[2]; // array of 2 integers
+\end{lstlisting}
+
+\noindent \break Each of the elements is a single-dimensional array of integers.\\
+
+\noindent We can initialize the array when we create it:
+\begin{lstlisting}[numbers=none]
+Jag[0] = new int[] {1, 3, 5, 7, 9};
+Jag[1] = new int[] {0, 2, 4, 6};
+Jag[2] = new int[] {11, 22};
+\end{lstlisting}
+
+\noindent \break Array can also be initialized upon declaration like this:
+\begin{lstlisting}[numbers=none]
+int[][] Jag = new int[][] {
+		new int[] {1, 3, 5, 7, 9},
+		new int[] {0, 2, 4, 6},
+		new int[] {11, 22}
+};
+\end{lstlisting}
+
+ The elements of Jag are arrays and thus are reference types, so they are initialized to null. Individual array elements can be accessed like this:
+
+\begin{lstlisting}[numbers=none]
+Jag[0][1] = 77;
+// Assign 77 to the second element ([1]) of the first array ([0])
+\end{lstlisting}
+
+\noindent \break \textbf{Example} \\
+
+\lstinputlisting[caption=Example of jagged array]{JaggedArrayExample.cs}
+
+\section{Procedure and Functions}
+
+\subsection{Procedure}
+A procedure is a block of Visual Basic statements enclosed by a declaration statement (\texttt{Function, Sub, Operator, Get, Set}) and a matching \texttt{End} declaration. All executable statements in Visual Basic must be within some procedure.
+
+A function allows you to encapsulate a piece of code and call it from other parts of your code. Functions are useful to improve the code reusability by reducing the code duplication.
+
+\subsubsection*{Types of Procedures}
+Visual Basic uses several types of procedures:
+
+\paragraph*{Sub Procedures}
+Perform actions but do not return a value to the calling code.
+
+\paragraph*{Event-handling procedures}
+Are \texttt{Sub} procedures that execute in response to an event raised by user action or by an occurrence in a program.
+
+\paragraph*{Function Procedures}
+Return a value to the calling code. They can perform other actions before returning.
+
+
+
+\paragraph*{Property Procedures}
+Return and assign values of properties on objects or modules.
+
+\paragraph*{Operator Procedures}
+Define the behavior of a standard operator when one or both of the operands is a newly-defined class or structure.
+
+\paragraph*{Generic Procedures} in Visual Basic define one or more type parameters in addition to their normal parameters, so the calling code can pass specific data types each time it makes a call.
+
+
+\subsubsection*{Sub Procedure}
+A Sub procedure is a series of Visual Basic statements enclosed by the \texttt{Sub} and \texttt{End Sub} statements. The Sub procedure performs a task and then \textit{returns control to the calling code}, but it \textit{does not return a value} to the calling code.
+
+We can define a Sub procedure in \textit{modules, classes, and structures}. By default, it is \texttt{Public}.
+
+The term \textit{method} describes a \texttt{Sub} or \texttt{Function} procedure that is accessed from outside its defining module, class, or structure.
+
+A Sub procedure can take arguments, such as constants, variables, or expressions, which are passed to it by the calling code.
+
+\subsubsection*{Syntax}
+
+\begin{lstlisting}[style=vb, numbers=none]
+' Syntax: Sub procedure	
+[modifiers] Sub SubName[(parameterList)]
+' Statements of the Sub procedure.
+End Sub
+\end{lstlisting}
+Where,
+\begin{itemize}
+	\item \texttt{Modifiers}: specify the access level of the procedure; possible values are - Public, Private, Protected, Friend, Protected Friend and information regarding overloading, overriding, sharing, and shadowing.
+
+	\item \texttt{SubName}: indicates the name of the Sub.
+
+	\item \texttt{ParameterList}:  specifies the list of the parameters.
+\end{itemize}
+
+\subsubsection*{Example}
+Example shown in Listing {\ref{lst:vb-procedure-example}} demonstrates a Sub procedure \texttt{CalculatePay} that takes two parameters \texttt{hours} and \texttt{wages} and displays the total pay of an employee.
+
+\lstinputlisting[style={vb}, caption= {Example of sub procedure.}, label={lst:vb-procedure-example}]{vb-procedure-example.vb}
+
+\subsection{Function}
+A Function procedure is a series of Visual Basic statements enclosed by the \texttt{Function} and \texttt{End Function} statements. The Function procedure performs a task and then returns control to the calling code. When it returns control, it also \textit{returns a value} to the calling code.
+
+We can define a Function procedure in a module, class, or structure. It is Public by default.
+
+A Function procedure can take arguments, such as constants, variables, or expressions, which are passed to it by the calling code.
+
+\subsubsection*{Syntax}
+\begin{lstlisting}[style=vb]
+[Modifiers] Function FunctionName [(ParameterList)] As ReturnType
+	[Statements]
+End Function
+\end{lstlisting}
+Where,
+
+\begin{itemize}
+	\item \texttt{Modifiers}:  specify the access level of the function; possible values are: Public, Private, Protected, Friend, Protected Friend and information regarding overloading, overriding, sharing, and shadowing.
+
+	\item \texttt{FunctionName}: indicates the name of the function.
+
+	\item \texttt{ParameterList}:specifies the list of the parameters.
+
+	\item \texttt{ReturnType}: specifies the data type of the variable the function returns.
+\end{itemize}
+
+
+
+\subsubsection*{Example}
+Example shown in Listing {\ref{lst:vb-function}} demonstrates the example of function in VB.
+\lstinputlisting[style={vb}, caption= {Use of VB function to return max number}, label={lst:vb-function}]{vb-function-example.vb}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

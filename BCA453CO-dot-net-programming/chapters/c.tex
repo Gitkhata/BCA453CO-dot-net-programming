@@ -1,0 +1,1227 @@
+\chapter{Windows Forms and Standard Components}
+
+\section{Introduction}
+Windows Forms is a Graphical User Interface(GUI) class library which is bundled in .\ Net Framework. Its main purpose is to provide an easier interface to develop the applications for desktop, tablet, PCs. It is also termed as the \textit{WinForms}. The applications which are developed by using Windows Forms or WinForms are known as the Windows Forms Applications that runs on the desktop computer. WinForms can be used only to develop the Windows Forms Applications not web applications. WinForms applications can contain the different type of controls like labels, list boxes, tooltip etc.
+
+\section{Basic controls}
+\subsection{Label Control}
+Labels are one of the most frequently used C\# control. We can use the Label control to display text in a set location on the page. Label controls can also be used to add descriptive text to a Form to provide the user with helpful information. The Label class is defined in the \texttt{System.Windows.Forms} namespace.
+
+
+%%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%%	\includegraphics[width=\textwidth]{label-control}
+%	\caption{Label control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lstlisting}[numbers=none]
+label1.Text = "This is my first Label";	
+\end{lstlisting}
+	
+In addition to displaying text, the Label control can also display an image using the Image property, or a combination of the ImageIndex and ImageList properties.
+
+\begin{lstlisting}[numbers=none]
+label1.Image = Image.FromFile("C:\\testimage.jpg");
+\end{lstlisting}
+
+The following C\# source code shows how to set some properties of the Label through coding.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=Set properties of label control]{LabelControl.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Button Control}
+Windows Forms controls are reusable components that encapsulate user interface functionality and are used in client side Windows applications. A button is a control, which is an interactive component that enables users to communicate with an application. The Button class inherits directly from the ButtonBase class. A Button can be clicked by using the mouse, ENTER key, or SPACEBAR if the button has focus.
+
+%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%	%	\includegraphics[width=\textwidth]{button-control}
+%	\caption{Button control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+When you want to change display text of the Button , you can change the Text property of the button.
+
+\begin{lstlisting}[numbers=none]
+button1.Text = "Click Here";
+\end{lstlisting}
+
+Similarly if you want to load an Image to a Button control , you can code like this.
+
+\begin{lstlisting}[numbers=none]
+button1.Image = Image.FromFile("C:\\testimage.jpg");
+\end{lstlisting}
+
+
+
+\subsubsection*{Call a Button's Click Event}
+The Click event is raised when the Button control is clicked. This event is commonly used when no command name is associated with the Button control. Raising an event invokes the event handler through a delegate.
+
+\begin{lstlisting}[numbers=none]
+private void Form1_Load(object sender, EventArgs e)
+\end{lstlisting}
+
+The following C\# source code shows how to change the button Text property while Form loading event and to display a message box when pressing a Button Control.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=Button control]{ButtonControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{TextBox Control}
+A TextBox control is used to display, or accept as input, a single line of text. This control has additional functionality that is not found in the standard Windows text box control, including multi-line editing and password character masking.
+%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%	%	\includegraphics[width=\textwidth]{textbox-control}
+%	\caption{Textbox control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A text box object is used to display text on a form or to get user input while a C\# program is running. In a text box, a user can type data or paste it into the control from the clipboard.
+
+For displaying a text in a TextBox control, you can code like this.
+
+\begin{lstlisting}[numbers=none]
+textBox1.Text = "Dot net Programming";
+\end{lstlisting}	
+
+You can also collect the input value from a TextBox control to a variable like this way.	
+\begin{lstlisting}[numbers=none]
+string var;
+\end{lstlisting}
+
+From the following C\# source code you can see some important property settings to a TextBox control.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=Setting some textbox control property]{TextboxControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{ComboBox Control }
+C\# controls are located in the Toolbox of the development environment, and you use them to create objects on a form with a simple series of mouse clicks and dragging motions. A ComboBox displays a text box combined with a ListBox, which enables the user to select items from the list or enter a new value.
+
+The user can type a value in the text field or click the button to display a drop down list. You can add individual objects with the Add method. You can delete items with the Remove method or clear the entire list with the Clear method.
+
+\subsubsection*{Add item to combobox}
+\begin{lstlisting}[numbers=none]
+comboBox1.Items.Add("Hami yahan chhaun");
+\end{lstlisting}
+
+\subsubsection*{Remove item from combobox}
+You can remove items from a combobox in two ways. You can remove item at a the specified index or giving a specified item by name.
+
+\begin{lstlisting}[numbers=none]
+// removes second item from the combobox
+comboBox1.Items.RemoveAt(1);
+
+// removes "Hami yahan chhaun" from the combobox
+comboBox1.Items.Remove("Hami yahan chhaun");
+\end{lstlisting}
+
+\subsubsection*{DropDownStyle }
+The DropDownStyle property specifies whether the list is always displayed or whether the list is displayed in a drop-down. The DropDownStyle property also specifies whether the text portion can be edited.
+\begin{lstlisting}[numbers=none]
+comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+\end{lstlisting}
+
+\subsubsection*{ComboBox Example}
+The following C\# source code add four districts to a combo box while load event of a Windows Form and int Button click event it displays the selected text in the Combo Box.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=Combobox control]{ComboboxControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{ListBox Control}
+The ListBox control enables you to display a list of items to the user that the user can select by clicking.
+
+\subsubsection{Add Items in a Listbox}
+\begin{lstlisting}[numbers=none]
+public int Add (object item);
+\end{lstlisting}
+
+In addition to display and selection functionality, the ListBox also provides features that enable you to efficiently add items to the ListBox and to find text within the items of the list. You can use the Add or Insert method to add items to a list box. The Add method adds new items at the end of an unsorted list box.
+
+\begin{lstlisting}[numbers=none]
+listBox1.Items.Add("Sunday");
+\end{lstlisting}
+
+If the Sorted property of the C\# ListBox is set to true, the item is inserted into the list alphabetically. Otherwise, the item is inserted at the end of the ListBox.
+
+\subsubsection*{Insert Items in a Listbox}
+
+\begin{lstlisting}[numbers=none]
+public void Insert (int index, object item);
+
+//  inserts an item into the list box at the specified index
+listBox1.Items.Insert(0, "First");
+\end{lstlisting}
+
+\subsubsection*{Listbox Column}
+A multicolumn ListBox places items into as many columns as are needed to make vertical scrolling unnecessary. The user can use the keyboard to navigate to columns that are not currently visible. First of all, you have Gets or sets a value indicating whether the ListBox supports multiple columns 
+
+\subsubsection*{Remove item from Listbox}
+
+\begin{lstlisting}[numbers=none]
+public void RemoveAt (int index);
+\end{lstlisting}
+
+\subsubsection*{Listbox Vs ListView Vs GridView}
+C\# \texttt{ListBox} has many similarities with \texttt{ListView} or GridView (they share the parent class \texttt{ItemsControl}), but each control is oriented towards different situations. ListBox is best for general UI composition, particularly when the elements are always intended to be selectable, whereas \texttt{ListView} or \texttt{GridView} are best for data binding scenarios, particularly if virtualization or large data sets are involved. One most important difference is \texttt{listview} uses the extended selection mode by default.
+
+\subsection{Checked ListBox Control}
+The \texttt{CheckedListBox} control gives you all the capability of a list box and also allows you to display a check mark next to the items in the list box.
+
+The user can place a check mark by one or more items and the checked items can be navigated with the \verb*|CheckedListBox.CheckedItemCollection| and \verb*|CheckedListBox.CheckedIndexCollection|.
+
+\subsubsection*{Add items}
+
+\begin{lstlisting}[numbers=none]
+public int Add (object item, bool isChecked);
+\end{lstlisting}
+
+You can add individual items to the list with the Add method . The \texttt{CheckedListBox} object supports three states through the \texttt{CheckState} enumeration: Checked, Indeterminate, and Unchecked.
+
+\begin{lstlisting}[numbers=none]
+checkedListBox1.Items.Add("Sunday", CheckState.Checked);
+\end{lstlisting}
+
+If you want to add objects to the list at run time, assign an array of object references with the \texttt{AddRange} method. The list then displays the default string value for each object.
+
+\begin{lstlisting}[numbers=none]
+string[] days = new[] { "Sunday", "Monday", "Tuesday" };
+\end{lstlisting}
+ By default checkedlistbox items are unchecked .
+
+\subsubsection*{Check all items}
+If you want to check an item in a \texttt{Checkedlistbox}, you need to call SetItemChecked with the relevant item.
+
+\begin{lstlisting}[numbers=none]
+public void SetItemChecked (int index, bool value);
+\end{lstlisting}
+
+Parameters:
+\begin{itemize}
+	\item \verb*|index(Int32)| - The index of the item to set the check state for.
+	\item \verb*|value(Boolean)| - true to set the item as checked; otherwise, false.
+\end{itemize}
+
+\subsection{RadioButton Control }
+A radio button or option button enables the user to select a single option from a group of choices when paired with other RadioButton controls. When a user clicks on a radio button, it becomes checked, and all other radio buttons with same group become unchecked.
+
+The RadioButton control can display text, an Image, or both. Use the Checked property to get or set the state of a RadioButton.
+
+\begin{lstlisting}[numbers=none]
+radioButton1.Checked = true;
+\end{lstlisting}
+
+The radio button and the check box are used for different functions. Use a radio button when you want the user to choose only one option. When you want the user to choose all appropriate options, use a check box. Like check boxes, radio buttons support a Checked property that indicates whether the radio button is selected.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=Radio button control]{RadioButtonControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{CheckBox Control}
+CheckBoxes allow the user to make multiple selections from a number of options. CheckBox to give the user an option, such as true/false or yes/no. You can click a check box to select it and click it again to deselect it.
+
+The CheckBox control can display an image or text or both. Usually CheckBox comes with a caption, which you can set in the Text property.
+
+\begin{lstlisting}[numbers=none]
+checkBox1.Text = "Java";
+\end{lstlisting}
+
+You can use the CheckBox control ThreeState property to direct the control to return the Checked, Unchecked, and Indeterminate values. You need to set the check boxs ThreeState property to True to indicate that you want it to support three states.
+
+\begin{lstlisting}[numbers=none]
+checkBox1.ThreeState = true;
+\end{lstlisting}
+
+The radio button and the check box are used for different functions. Use a radio button when you want the user to choose only one option.When you want the user to choose all appropriate options, use a check box. The following C\# program shows how to find a checkbox is selected or not.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=Checkbox control]{CheckboxControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{ProgressBar Control}
+A progress bar is a control that an application can use to indicate the progress of a lengthy operation such as calculating a complex result, downloading a large file from the Web etc.
+
+%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%	%	\includegraphics[width=\textwidth]{progressbar-control}
+%	\caption{ProgressBar control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ProgressBar controls are used whenever an operation takes more than a short period of time. The Maximum and Minimum properties define the range of values to represent the progress of a task.
+
+\begin{itemize}
+
+\item \verb*|Minimum| : Sets the lower value for the range of valid values for progress.
+
+\item \verb*|Maximum| : Sets the upper value for the range of valid values for progress.
+
+\item \verb*|Value| : This property obtains or sets the current level of progress.
+\end{itemize}
+
+By default, Minimum and Maximum are set to 0 and 100. As the task proceeds, the ProgressBar fills in from the left to the right. To delay the program briefly so that you can view changes in the progress bar clearly.
+
+The following C\# program shows a simple operation in a progressbar.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=ProgressBar example]{ProgressBarControl.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{DateTimePicker Control}
+The DateTimePicker control allows you to display and collect date and time from the user with a specified format.
+
+%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%	%	\includegraphics[width=\textwidth]{date-time-picker}
+%	\caption{DateTime picker control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The DateTimePicker control has two parts, a label that displays the selected date and a popup calendar that allows users to select a new date. The most important property of the DateTimePicker is the Value property, which holds the selected date and time.
+
+\begin{lstlisting}[numbers=none]
+dateTimePicker1.Value = DateTime.Today;
+\end{lstlisting}
+
+The Value property contains the current date and time the control is set to. You can use the Text property or the appropriate member of Value to get the date and time value.
+
+\begin{lstlisting}[numbers=none]
+DateTime iDate;
+\end{lstlisting}
+	
+The control can display one of several styles, depending on its property values. The values can be displayed in four formats, which are set by the Format property: Long, Short, Time, or Custom.
+
+\begin{lstlisting}[numbers=none]
+dateTimePicker1.Format = DateTimePickerFormat.Short;
+\end{lstlisting}
+
+The following C\# program shows how to set and get the value of a DateTimePicker1 control.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=DateTimePicker example]{DateTimePicker.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Menu Control}
+A Menu on a Windows Form is created with a MainMenu object, which is a collection of MenuItem objects. MainMenu is the container for the Menu structure of the form and menus are made of MenuItem objects that represent individual parts of a menu.
+
+You can add menus to Windows Forms at design time by adding the MainMenu component and then appending menu items to it using the Menu Designer.
+
+After drag the Menustrip on your form you can directly create the menu items by type a value into the "Type Here" box on the menubar part of your form. From the following picture you can understand how to create each menu items on mainmenu Object.
+
+
+\subsection{MDI Form}
+A Multiple Document Interface (MDI) programs can display multiple child windows inside them. This is in contrast to single document interface (SDI) applications, which can manipulate only one document at a time. Visual Studio Environment is an example of Multiple Document Interface (MDI) and notepad is an example of an SDI application. MDI applications often have a Window menu item with submenus for switching between windows or documents.
+
+
+
+Any windows can become an MDI parent, if you set the IsMdiContainer property to True.
+
+\begin{lstlisting}[numbers=none]
+IsMdiContainer = true;
+\end{lstlisting}
+
+The following C\# program shows a MDI form with two child forms. Create a new C\# project, then you will get a default form Form1 . Then add two more forms in the project (Form2 , Form 3). 
+
+NOTE: If you want the MDI parent to auto-size the child form you can code like this.
+
+\begin{lstlisting}[numbers=none]
+form.MdiParent = this;
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[caption=MDI example]{MDIForm.cs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Timer Control}
+The Timer Control plays an important role in the development of programs both Client side and Server side development as well as in Windows Services. With the Timer Control we can raise events at a specific interval of time without the interaction of another thread.
+
+We require Timer Object in many situations on our development environment. We have to use Timer Object when we want to set an interval between events, periodic checking, to start a process at a fixed time schedule, to increase or decrease the speed in an animation graphics with time schedule etc.
+
+A Timer control does not have a visual representation and works as a component in the background.
+
+We can control programs with Timer Control in millisecond , seconds, minutes and even in hours. The Timer Control allows us to set Interval property in milliseconds. That is, one second is equal to 1000 milliseconds. For example, if we want to set an interval of 1 minute we set the value at Interval property as 60000, means 60x1000.
+
+By default the Enabled property of Timer Control is False. So before running the program we have to set the Enabled property is True , then only the Timer Control starts its function.
+
+\subsubsection*{Timer example}
+In the following program we display the current time in a Label Control. In order to develop this program, we need a Timer Control and a Label Control. Here we set the timer interval as 1000 milliseconds, that means one second, for displaying current system time in Label control for the interval of one second.
+
+\begin{lstlisting}[numbers=none]
+using System;
+\end{lstlisting}
+
+\subsubsection*{Start and Stop Timer Control}
+The Timer control have included the Start and Stop methods for start and stop the Timer control functions. The following C\# program shows how to use a timer to write some text to a text file each seconds. The program has two buttons, Start and Stop. The application will write a line to a text file every 1 second once the Start button is clicked. The application stops writing to the text file once the Stop button is clicked.
+
+
+
+\section{Menu and Context Menus}
+\subsection{Menu}
+The Menu control presents a list of items that specify commands or options for an application.
+Typically, clicking an item on a menu opens a submenu or causes an application to carry out a
+command. A Menu on a Windows Form is created with a \texttt{MainMenu} object, which is a collection
+of \texttt{MenuItem} objects. \texttt{MainMenu} is the container for the Menu structure of the form and menus are
+made of \texttt{MenuItem} objects that represent individual parts of a menu. You can add menus to
+Windows Forms at design time by adding the \texttt{MainMenu} component and then appending menu
+items to it using the Menu Designer.
+
+\subsubsection*{Timer Tick Event}
+Timer Tick event occurs when the specified timer interval has elapsed and the timer is enabled.
+
+\begin{lstlisting}[numbers=none]
+myTimer.Tick += new EventHandler(TimerEventProcessor);
+\end{lstlisting}
+
+\subsubsection*{Timer Elapsed Event}
+Timer Elapsed event occurs when the interval elapses. The Elapsed event is raised if the Enabled property is true and the time interval (in milliseconds) defined by the Interval property elapses.
+
+\begin{lstlisting}[numbers=none]
+MyTimer.Elapsed += OnTimedEvent;
+\end{lstlisting}
+
+\subsubsection*{Timer Interval Property}
+Timer Interval property gets or sets the time, in milliseconds, before the Tick event is raised relative to the last occurrence of the Tick event.
+
+
+\subsubsection*{Timer Reset Property}
+Timer AutoReset property gets or sets a Boolean indicating whether the Timer should raise the Elapsed event only once (false) or repeatedly (true).
+
+\begin{lstlisting}[numbers=none]
+MyTimer.AutoReset = false;
+\end{lstlisting}
+
+
+\subsubsection*{TimerCallback Delegate}
+Callback represents the method that handles calls from a Timer. This method does not execute in the thread that created the timer; it executes in a separate thread pool thread that is provided by the system.
+
+\subsubsection*{Timer Class}
+System.Timers.Timer fires an event at regular intervals . This is a somewhat more powerful timer. Instead of a Tick event, it has the Elapsed event. The Start and Stop methods of System.Timers.Timer which are similar to changing the Enabled property. Unlike the System.Windows.Forms.Timer, the events are effectively queued - the timer doesn't wait for one event to have completed before starting to wait again and then firing off the next event. The class is intended for use as a server-based or service component in a multithreaded environment and it has no user interface and is not visible at runtime.
+
+The following example instantiates a System.Timers.Timer object that fires its Timer.Elapsed event every two seconds sets up an event handler for the event, and starts the timer.
+
+\begin{itemize}
+\item Create a timer object for one seconds interval.
+\begin{lstlisting}[numbers=none]
+ myTimer = new System.Timers.Timer(1000);
+\end{lstlisting}
+	
+\item Set elapsed event for the timer. This occurs when the interval elapses.
+\begin{lstlisting}[numbers=none]
+myTimer.Elapsed += OnTimedEvent;
+\end{lstlisting}
+
+\item Finally, start the timer.
+\begin{lstlisting}[numbers=none]
+ myTimer.Enabled = true;
+\end{lstlisting}
+\end{itemize}
+
+\subsection{PictureBox Control}
+The Windows Forms PictureBox control is used to display images in bitmap, GIF , icon , or JPEG formats.
+
+%%%%%%%%%%%%%%%%%%%%FIGURE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%	\centering
+%	%	\includegraphics[width=\textwidth]{picture-box}
+%	\caption{PictureBox control}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%FIGURE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+You can set the Image property to the Image you want to display, either at design time or at run time. You can programmatically change the image displayed in a picture box, which is particularly useful when you use a single form to display different pieces of information.
+
+\begin{lstlisting}[numbers=none]
+pictureBox1.Image = Image.FromFile("c:\\testImage.jpg");
+\end{lstlisting}
+
+The SizeMode property, which is set to values in the PictureBoxSizeMode enumeration, controls the clipping and positioning of the image in the display area.
+
+\begin{lstlisting}[numbers=none]
+pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+\end{lstlisting}
+
+There are five different PictureBoxSizeMode is available to PictureBox control.
+
+\begin{itemize}
+	\item \verb*|AutoSize| - Sizes the picture box to the image.
+	\item \verb*|CenterImage| - Centers the image in the picture box.
+	\item \verb*|Normal| - Places the upper-left corner of the image at upper left in the picture box
+	\item \verb*|StretchImage| - Allows you to stretch the image in code
+\end{itemize}
+
+
+The PictureBox is not a selectable control, which means that it cannot receive input focus. The following C\# program shows how to load a picture from a file and display it in streach mode.
+
+\subsection{ImageList}
+An ImageList component is exactly what the name implies – a list of images. Typically, this component is used for holding a collection of images that are used as toolbar icons or icons in a TreeView control. Many controls have an ImageList property. The ImageList property typically comes with an ImageIndex property. The ImageList property is set to an instance of the ImageList component, and the ImageIndex property is set to the index in the ImageList that represents the image that should be displayed on the control. You add images to the ImageList component by using the Add method of the ImageList. Images property. The Images property returns an ImageCollection.
+
+The two most commonly used properties are ImageSize and ColorDepth ImageSize uses a Size structure as its value. The default value is 16 x 16 but it can be any value from 1 to 256.The ColorDepth uses a ColorDepth enumeration as its value. The color depth values go from 4-bit to 32-bit. For .NET Framework 1.1, the default is ColorDepth. Depth8Bit.
+
+\subsection{Panel}
+A Panel is simply a control that contains other controls. Bygrouping controls together and placing them in a panel, it is a little easier to manage the controls, For example, you can disable all of the controls in the panel by disabling the panel, Because the Panel control is derived from ScrollableControl, you also can-get the advantage of the AutoScroll property. If you have too many controls to display in the available area, place them in a Panel and set AutoScroll to true - now you can scroll through all of the controls.
+
+Panels do not show a border by default, but by setting the BorderStyle property to something other than none, you can use the Panel to visually group related controls using borders. This makes the user interface more user-friendly.
+
+Panel is the base class for the FlowLayoutPanel, TableLayoutPanel, TabPage, and SplitterPanel.
+
+By using these controls, a very sophisticated and professional-looking form or window can be created The FlowLayoutPanel and TableLayoutPanel are especially useful for creating forms that resize properly.
+
+\subsection{TabControl and TabPages}
+TabControl allows you to group related controls onto a series of tab pages. TabControl manages the collection of TabPages, Several properties control the appearance of TabControl, The Appearance property uses the TabAppearance enumeration to determine what the tabs look like. The values are FlatButtons, Buttons, or Normal. The Multiline property is a Boolean that determines if more than
+one row of tabs is shown, If the Multiline property is setto false and there are more tabs than can fit in the display, arrows appear that allow the user to scroll and see the rest of the tabs.
+
+The TabPage Text property is what is displayed on the tab, The Text property is a parameter in a constructor override as well.
+
+Once you create a TabPage control, it is basically a container control for you to place other controls.
+
+The Designer in VISualStudio .NET makes it easy to add TabPage controls to a TabControl control by using collection editor. Youcan set the various properties as you add each page. Then you can drag the o er child controls to each TabPage control.
+
+You can determine the current tab by looking at the SelectedTab property, The selectedlnd event each time a new tab is selected, By listening to the Selectedlndex property and then confirming the current tab with SelectedTab, you can do special processing based on each tab.
+
+You could, for example, manage the data displayed for each tab.
+
+\subsection{ToolStrip}
+The ToolStrip control is a container control used to create toolbars, menu structures, and status bars. The ToolStrip is used directly for toolbars, and serves as the base class for the MenOtrip and Start:usStrip controls.
+
+While used as a toolbar, the ToolStrip control uses a set of controls based on the abstract Tool.StripItem class, ToolStripItem adds the common display and layout functionality as well as managing most of the events used by the controls, ToolStripltem is derived from the System COllPonentModel.
+
+Component class and not from the Control class. ToolStripltem-based classes must be contained in a Tool Strip-based container.
+
+Image and Text are probably the most common properties that will be set Images can be set with either the Image property or by using the IrnageList control and setting it to the IrnageList property of the ToolStrip control. The Imagelndex property of the individual controls can then be set.
+
+Formatting of the text on a ToolStripItem is handled with the Font, TextAlign, and TextDirection properties, TextAlign sets the alignment of the text in relation to the control.
+
+This can be any of the ControlAlignrnent enumeration values, The default is MiddleRight. The TextDirection property sets the orientation of the text Values can be any of the ToolStripTeXtDirection enumeration values, which include Horizontal, Inherit, Vertical270, and Vertical90. Verticai270 rotates the text 270 degree and Vertical90 rotates the text 90 degrees.
+
+The DisplayStyle property controls whether text, image, text and image, or nothing is displayed on the control. When AutoSize is set to true, the ToolStripItem will resize itself so only the minimum amount of space is used.
+
+\subsection{MenuStrip}
+The MenuStrip control is the container for the menu structure of an application, As mentioned earlier, MenuStrip is derived from the ToolStrip class, The menu system is built by adding ToolStripMenu objects to the MenuStrip, You can do this in code or in the Designer of Visual Studio, Drag a MenuStrip control onto a form in the Designer and the MenuStrip will allow the entry of the menu text directly on the menu items.
+
+The MenuStrip control has only a couple of additional properties. GripStyle uses the ToolStripGripStyle enumeration to set the grip as visible or hidden, The MdiWindowListltem property takes or returns a ToolStripMenultem, This ToolStripMenuItem is the menu that shows all open windows in an MDI application.
+
+\subsection{ContextMenuStrip}
+Toshow a context menu. or a menu displayed when the user right-clicks the mouse, the ContextMenuStrip class is used, LikeMenuStrip, Context.-!enuStrip is a container for ToolStripMenultems objects.
+
+However, it is derived from ToolStripDropDownMenu. A ContextMenu is created the same way as a MenuStrip.
+
+ToolStripMenuItem are added, and the Click event of each item is defined to perform a specific task, Context menus are assigned to specific controls. This is done by setting the ContextMenuStrip property of the control, When the user right-clicks the control, the menu is displayed.
+
+\subsection{ToolStrlpMenultem}
+\texttt{ToolStripMenultem} is the class that builds the menu structures, Each ToolStripMenuItem object represents a single menu choice on the menu system. Each ToolStripMenuItem has a ToolStripItemCollection that maintains the child menus. Thi\$lunctionality is inherited from ToolStripDropDownltems.
+
+Because ToolStripMenuItem is derived from ToolStripltem, all of the same formatting properties apply Images appear as small icons to the right of the menu text. Menu items can have check marks show up next to them with the Checked and CheckState properties, Shortcut keys can be assigned to each menu item. They are genaNIy two key chords such as Ctr -C (common shortcut for Copy); When a shortcut key is assigned, is optionally be displayed on menu by setting the ShowShortCutKey property to true.
+
+Tobe useful, the menu item has to do something when the user clicks it or uses the defined shortcut, The most common way is to handle the Click event.
+
+If the Checked property is being used, the Check StateChanged and CheckedChanged events can be used to determine a change in the checked state.
+
+
+
+\subsection{Context Menus}
+The ContextMenu class represents the element that exposes functionality by using a context-
+specific Menu. Typically, a user exposes the ContextMenu in the user interface (UI) by right-
+clicking the mouse button. A ContextMenu is attached to a specific control. The ContextMenu
+element enables you to present users with a list of items that specify commands or options that are
+associated with a particular control, for example, a Button. Users right-click the control to make the
+menu appear. Typically, clicking a MenuItem opens a submenu or causes an application to carry out
+a command.
+
+
+\section{Menu Strip, Toolbar Strip}
+\subsection{Menu Strip}
+The MenuStrip control allows you to easily create menus like those found in Microsoft Office.
+MenuStrip supports the multiple-document interface (MDI) and menu merging, tool tips, and
+overflow. You can enhance the usability and readability of your menus by adding access keys,
+shortcut keys, check marks, images, and separator bars. The MenuStrip control replaces and adds
+functionality to the MainMenu control; however, the MainMenu control is retained for backward
+compatibility and future use if you choose.
+
+Use the MenuStrip control to:
+
+\begin{itemize}
+	\item Create easily customized, commonly employed menus that support advanced user interface
+	and layout features, such as text and image ordering and alignment, drag-and-drop
+	operations, MDI, overflow, and alternate modes of accessing menu commands.
+	\item Support the typical appearance and behavior of the operating system.
+	\item Handle events consistently for all containers and contained items, in the same way you
+	handle events for other controls.
+\end{itemize}
+
+\subsection{ToolStrip}
+ToolStrip is the base class for MenuStrip, StatusStrip, and ContextMenuStrip.
+Use ToolStrip and its associated classes in new Windows Forms applications to create toolbars that
+can have a Windows XP, Office, Internet Explorer, or custom appearance and behavior, all with or
+without themes, and with support for overflow and run-time i5ainting, mouse and keyboard input,
+and drag-and-drop functionality. Use the ToolStripRenderer class with the ToolStripManager class
+to gain even more control and customizability over the painting and layout style of all ToolStrip
+controls on a Windows Form.
+
+\section{Group box and Panel}
+\subsection{Group box}
+GroupBox represents a control that creates a container that has a border and a header for user
+interface (UI) content.
+
+\subsection{Panel}
+Windows Forms Panel controls are used to provide an identifiable grouping for other controls.
+Typically, you use panels to subdivide a form by function. The Panel control is similar to the
+GroupBox control; however, only the Panel control can have scroll bars, and only the GroupBox
+control displays a caption.
+
+\begin{longtable}[H]{p{5.5cm}p{5.5cm}}	
+	\toprule
+	\textbf{Panel} 			& \textbf{GroupBox} \\
+	\midrule
+	\endhead
+	It does not have the Text property 		& It has the Text property\\
+	
+	We can display scrollbars on Panle if the height/width of the child controls exceeds that of the Panel. For that set AutoScroll property to true  & We cannot display scrollbars on GroupBox \\
+	
+	It has the click event and other events like Other events
+	MouseMove, MouseDown, MouseUp & It does not have the click event
+	that are missing include MouseMove, MouseDown, MouseUp events\\
+	
+To display border, We have to use the BorderStyle property & BorderStyle property is not there as Border or Frame is there by default \\
+
+	\bottomrule
+\end{longtable}
+
+\section{ListBox}
+A Windows Forms ListBox control displays a list from which the user can select one or more items.
+If the total number of items exceeds the number that can be displayed, a scroll bar is automatically
+added to the ListBox control. When the MultiColumn property is set to true, the list box displays
+items in multiple columns and a horizontal scroll bar appears. When the MultiColumn property is
+set to false, the list box displays items in a single column and a vertical scroll bar appears. When
+ScrollAlwaysVisible is set to true, the scroll bar appears regardless of the number of items. The
+SelectionMode property determines how many list items can be selected at a time.
+
+The SelectedIndex property returns an integer value that corresponds to the first selected item in the
+list box. You can programmatically change the selected item by changing the SelectedIndex value in
+code; the corresponding item in the list will appear highlighted on the Windows Form. If no item is
+selected, the SelectedIndex value is -1. If the first item in the list is selected, the SelectedIndex
+value is 0. When multiple items are selected, the SelectedIndex value reflects the selected item that
+appears first in the list. The SelectedItem property is similar to SelectedIndex, but returns the item
+itself, usually a string value. The Count property reflects the number of items in the list, and the
+value of the Count property is always one more than the largest possible SelectedIndex value
+because SelectedIndex is zero-based.
+
+To add or delete items in a ListBox control, use the Add, Insert, Clear or Remove method.
+Alternatively, you can add items to the list by using the Items property at design time.
+
+\section{RadioButton and CheckBox}
+Checkboxes and Radio Buttons are way to offer your users choices. Checkboxes allow a user to
+select multiple options, whereas Radio Buttons allow only one. RadioButton allows distinct
+selection of several items. In each group of RadioButtons, only one can be checked or selected.
+Conceptually, this control implements an exclusive selection. CheckBoxes allow multiple selections
+at once.
+
+
+\section{DateTimePicker}
+The Windows Forms DateTimePicker control allows the user to select a single item from a list of
+dates or times. When used to represent a date, it appears in two parts: a drop-down list with a date
+represented in text, and a grid that appears when you click on the down-arrow next to the list. The
+grid looks like the MonthCalendar control, which can be used for selecting multiple dates.
+
+If you wish the DateTimePicker to appear as a control for picking or editing times instead of dates,
+set the ShowUpDown property to true and the Format property to Time.
+
+When the ShowCheckBox property is set to true, a check box is displayed next to the selected
+date in the control. When the check box is checked, the selected date-time value can be updated.
+When the check box is empty, the value appears unavailable.
+
+The control's MaxDate and MinDate properties determine the range of dates and times. The Value
+property contains the current date and time the control is set to. The values can be displayed in four
+formats, which are set by the Format property: Long, Short, Time, or Custom. If a custom format is
+selected, you must set the CustomFormat property to an appropriate string.
+
+\section{TabControl}
+TabControl presents a tabbed layout in the user interface. The .NET Framework provides this
+versatile and easy-to-use control. We add the control, change its pages, manipulate it in C\# code,
+and change its visual settings. The TabControl in the .NET Framework and Windows Forms is a
+powerful and easy-to-use layout control. It can help you keep clutter in the finished window to a
+minimum, while not restricting the range of options you offer.
+
+The Windows Forms TabControl displays multiple tabs, like dividers in a notebook or labels in a set
+of folders in a filing cabinet. The tabs can contain pictures and other controls. You can use the tab
+control to produce the kind of multiple-page dialog box that appears many places in the Windows
+operating system, such as the Control Panel Display Properties. Additionally, the TabControl can be
+used to create property pages, which are used to set a group of related properties.
+
+The most important property of the TabControl is TabPages, which contains the individual tabs.
+Each individual tab is a TabPage object. When a tab is clicked, it raises the Click event for that
+TabPage object.
+
+\section{RichTextBox}
+The Windows Forms RichTextBox control is used for displaying, entering, and manipulating text
+with formatting. The RichTextBox control does everything the TextBox control does, but it can also
+display fonts, colors, and links; load text and embedded images from a file; and find specified
+characters. The RichTextBox control is typically used to provide text manipulation and display
+features similar to word processing applications such as Microsoft Word. Like the TextBox control,
+the RichTextBox control can display scroll bars; but unlike the TextBox control, its default setting is
+to display both horizontal and vertical scrollbars as needed, and it has additional scrollbar settings.
+
+As with the TextBox control, the text displayed is set by the Text property. The RichTextBox
+control has numerous properties to format text. To manipulate files, the LoadFile and SaveFile
+methods can display and write multiple file formats including plain text, Unicode plain text, and
+Rich Text Format (RTF). The possible file formats are listed in RichTextBoxStreamType. You can
+use the Find method to find strings of text or specific characters.
+
+You can also use a RichTextBox control for Web-style links by setting the DetectUrls property to
+true and writing code to handle the LinkClicked event. You can prevent the user from
+manipulating some or all of the text in the control by setting the SelectionProtected property to
+true.
+
+You can undo and redo most edit operations in a RichTextBox control by calling the Undo and
+Redo methods. The CanRedo method enables you to determine whether the last operation the user
+has undone can be reapplied to the control.
+
+
+
+\section{ProgressBar}
+A progress bar is a control that an application can use to indicate the progress of a lengthy operation such as calculating a complex result, downloading a large file from the Web etc.
+
+ProgressBar indicates visually the progress of an operation. It is best used on a long-running
+computation or task. And the BackgroundWorker is often used to perform that task—it does not
+block the interface.
+
+Color: One of the useful properties on the ProgressBar is the ForeColor property. This can be set to
+a Color value to change the color of the bar itself that is drawn on the screen. It is often better to use
+the default color.
+
+The ProgressBar control is often used in conjunction with a threading mechanism such as
+BackgroundWorker. With its many options, the ProgressBar makes a suitable widget for letting your
+users know the application is still active.
+
+Example: add a ProgressBar control to your Windows Forms program by double-clicking on
+the ProgressBar entry in the Toolbox. For this example, we also need a BackgroundWorker—add
+one and then create the event handlers required.
+Note: We need the Load event handler, the DoWork event handler, and the ProgressChanged event
+handler.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=C\# example that uses ImageList]{ImageListExample.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Starting the background task}. In the \verb*|Form1_Load| event handler, add a method call to the
+RunWorkerAsync method on the BackgroundWorker instance. This will create a thread and the
+DoWork method will begin.
+
+\textbf{Inside the DoWork event handler}, we loop over the numbers 1 through 100. At each iteration, we
+wait one-tenth of a second. Then, we call the ReportProgress method on the BackgroundWorker
+instance.
+
+\textbf{And}: In ProgressChanged, we set the value of the ProgressBar to the ProgressPercentage property
+of the ProgressChangedEventArgs argument.
+
+\section{ImageList}
+ImageList provides a container for image data. The control is not visible directly. It is instead
+referenced from other controls such as ListView, which acquire the images from index values into
+the ImageList. The ImageList is simple to create. We add images manually or dynamically. By
+providing a container for images, the ImageList control gives Windows Forms programs another
+level of abstraction for managing images. You can reuse the same image in multiple places or with
+multiple controls. You can add images manually through Visual Studio or dynamically through C\#
+code using the ImageList.
+
+In this example, we have a list of file names, and then add each as an Image object using the
+Image.FromFile method to read the data. The \verb*|Form1_Load| event handler is used to make sure the
+code is run at startup of the application.
+
+\section{HelpProvider}
+%The HelpProvider control offers contextual help dialogs. Sometimes a user wants a verbose
+%description of a control. With HelpProvider we provide this description by adding a Help button and
+%setting some properties.
+%
+%Steps. Before we use the HelpProvider control, let's add the help button in the top right corner of
+%the window. It has a question mark on it. Change the HelpButton property to True on the Form.
+%
+%Note: Change the MaximizeBox and MinimizeBox properties to False. This is a necessary step.
+%
+%Tip: The HelpButton will not show up if the maximize or minimize buttons are enabled.
+%
+%Add HelpProvider. Next we need to add the HelpProvider control to the form. Open the Toolbox
+%and double-click on HelpProvider. The main effect this will have is all controls will have new
+%properties on them.
+%
+%\subsection*{Properties}
+%
+%\begin{tabular}{ll}
+%	HelpKeyword			& helpProvider1\\
+%	HelpNavigator		& helpProvider1\\
+%	HelpString			& helpProvider1\\
+%	ShowHelp			& helpProvider1\\
+%\end{tabular}
+%
+%Set HelpString. The HelpProvider is activated upon the user clicking on the Help button and then
+%clicking on a Control. So, to continue with the tutorial, add a Button control to your Windows Form.
+%
+%Then: Change the "HelpString on helpProvider1" property to have any message you like.
+%
+%Test HelpString. Now, when you click on the Help button in the top right of the Form, and then
+%click on the Button, the HelpProvider will display a box with a shadow. The HelpString will be
+%displayed inside this box.
+%
+%Summary. We used the HelpProvider control to provide contextual help in a Windows Forms
+%program. By adding the Help button and then setting the HelpString property that is offered by the
+%HelpProvider instance, a help mode is enabled.
+
+The Windows Forms HelpProvider component is used to associate an HTML Help 1.x Help file (either a .chm file, produced with the HTML Help Workshop, or an .htm file) with your Windows application. You can provide help in a variety of ways:
+\begin{itemize}
+	\item Provide context-sensitive Help for controls on Windows Forms.
+	
+	\item Provide context-sensitive Help on a particular dialog box or specific controls on a dialog box.
+	
+	\item Open a Help file to specific areas, such as the main page of a Table of Contents, the Index, or a search function.
+\end{itemize}
+
+Adding a HelpProvider component to your Windows Form allows the other controls on the form to expose the Help properties of the HelpProvider component. This enables you to provide help for the controls on your Windows Form. You can associate a Help file with the HelpProvider component using the HelpNamespace property. You specify the type of Help provided by calling SetHelpNavigator and providing a value from the HelpNavigator enumeration for the specified control. You provide the keyword or topic for Help by calling the SetHelpKeyword method.
+
+Optionally, to associate a specific Help string with another control, use the SetHelpString method. The string that you associate with a control using this method is displayed in a pop-up window when the user presses the F1 key while the control has focus.
+
+\section{Error Provider}
+ErrorProvider simplifies and streamlines error presentation. It is an abstraction that shows errors
+on your form. It does not require a lot of work on your part. This is its key feature. The
+ErrorProvider control in the Windows Forms framework provides a simple-to-understand
+abstraction for presenting errors on input. Importantly, it reduces the frustration associated with
+dialog window use. The ErrorProvider can also streamline error corrections by presenting many
+errors at once.
+
+A frustrating experience for a computer user is getting dialog boxes that demand your entire
+attention. The ErrorProvider alleviates this frustration. Also, the ErrorProvider can alert the user to
+more than one error at a time.
+
+Example. To start, please open the Toolbox pane in Visual Studio. Find and double-click on the
+ErrorProvider icon. This will insert the errorprovider1 into the tray at the bottom of the screen.
+
+Next: You can change properties on the ErrorProvider instance by right-clicking on it and selecting
+Properties.
+Note: Some properties and methods on the ErrorProvider are detailed in the following sections.
+Example. We start with the basics. We must activate the ErrorProvider in our Windows Forms
+program. The ErrorProvider won't initiate any actions. It will be invoked through other event
+handlers in the program.
+In the example, we have a TextBox control and a TextChanged event handler on that control. When
+the TextChanged event handler is triggered, we check to see if a digit character is present.
+
+And: If one is not, we activate an error through the ErrorProvider. Otherwise we clear the
+ErrorProvider.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=ErrorProvider example]{ErrorProviderExample.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+Using SetError method. The first argument of SetError is the identifier of the TextBox control.
+The second argument is the error message itself. The first argument tells the ErrorProvider where to
+draw the error sign.
+
+Using Clear method. It is also important that you use the Clear method when appropriate. If a digit
+was located, we simply remove the error sign from the user interface. This instantly tells our user
+that no error is still present.
+
+BlinkStyle. The ErrorProvider has two properties related to blinking. The BlinkRate indicates how
+many milliseconds each blink is apart. And the BlinkStyle lets you disable or enable blinking in
+general.
+
+Note: Typically, for less complicated user interfaces, blinking isn't necessary because the
+ErrorProvider will be easy to see.
+Tip: For more complex interfaces, the blinking could draw attention to the error. Setting BlinkStyle
+to NeverBlink is appropriate.
+\section{Graphics and GDI}
+The Graphics Device Interface (GDI) is a Microsoft Windows application programming interface
+and core operating system component responsible for representing graphical objects and
+transmitting them to output devices such as monitors and printers.
+
+GDI is responsible for tasks such as drawing lines and curves, rendering fonts and handling palettes.
+It is not directly responsible for drawing windows, menus, etc.; that task is reserved for the user
+subsystem, which resides in user32.dll and is built atop GDI. Other systems have components that
+are similar to GDI, for example macOS' Quartz and X Window System's Xlib/XCB.
+
+GDI's most significant advantages over more direct methods of accessing the hardware are perhaps
+its scaling capabilities and its abstract representation of target devices. Using GDI, it is very easy to
+draw on multiple devices, such as a screen and a printer, and expect proper reproduction in each
+case. This capability is at the center of most What You See Is What You Get applications for
+Microsoft Windows.
+
+Simple games that do not require fast graphics rendering may use GDI. However, GDI is relatively
+hard to use for advanced animation, and lacks a notion for synchronizing with individual video
+frames in the video card, lacks hardware rasterization for 3D, etc. Modern games usually use
+DirectX or OpenGL instead, which let programmers exploit the features of modern hardware.
+
+\section{Timer}
+This class regularly invokes code. Every several seconds or minutes, it executes a method. This is
+useful for monitoring the health of a program, as with diagnostics. The System.Timers namespace
+proves useful. With a Timer, we can ensure nothing unexpected has happened. We can also run a
+periodic update (to do anything). MSDN states that System.Timers "allows you to specify a
+recurring interval at which the Elapsed event is raised in your application." You could create a
+service that uses a Timer to periodically check the server and ensure that the system is up and
+running.
+
+Example:
+This example is a static class, meaning it cannot have instance members or fields. It includes the
+System.Timers namespace and shows the Elapsed event function.
+Note: It appends the current DateTime to a List every three seconds. This is just for the example
+page.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=Timer example]{TimerExample.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+%Properties. These are notes on properties, methods and events for Timer. As shown above, you
+%need to add the System.Timers namespace at the top of your file for easy access to Timer.
+%Timer.AutoReset: Indicates "whether the Timer should raise the Elapsed event each time the
+%specified interval elapses."
+%
+%Timer.Enabled: ``Whether the Timer should raise the Elapsed event." You must set this to
+%true if you want your timer to do anything.
+%
+%Timer.Interval: The number of milliseconds between Elapsed events being raised. Here "the
+%default is 100 milliseconds."
+%
+%Timer.Start: This does the same thing as setting Enabled to true. It is unclear why we need this
+%duplicate method.
+%
+%Timer.Stop: This does the same thing as setting Enabled to false. See the Timer.Start method
+%previously shown.
+%
+%Timer.Elapsed Event: An event (ElapsedEventHandler) that is invoked each time the Interval of
+%the Timer has passed.
+
+\section{SDI and MDI Applications}
+
+\subsection{SDI}
+SDI stands for Single Document Interface. It is an interface design for handling documents within a
+single application. SDI exists independently of others and thus is a standalone window. SDI
+supports one interface means you can handle only one application at a time. For grouping SDI uses
+special window managers.
+
+\subsection{MDI}
+MDI stands for Multiple Document Interface. It is an interface design for handling documents
+within a single application. When application consists of an MDI parent form containing all other
+window consisted by app, then MDI interface can be used. Switch focus to specific document can
+be easily handled in MDI. For maximizing all documents, parent window is maximized by MDI.
+
+\subsubsection*{Main Difference}
+MDI and SDI are interface designs for handling documents within a single application. MDI stands
+for “Multiple Document Interface” while SDI stands for “Single Document Interface”. Both are
+different from each other in many aspects. One document per window is enforced in SDI while
+child windows per document are allowed in MDI. SDI contains one window only at a time but MDI
+contain multiple document at a time appeared as child window. MDI is a container control while
+SDI is not container control. MDI supports many interfaces means we can handle many applications
+at a time according to user’s requirement. But SDI supports one interface means you can handle
+only one application at a time.
+
+\subsubsection*{Key Differences}
+\begin{itemize}
+	\item MDI stands for “Multiple Document Interface” while SDI stands for “Single Document
+	Interface”.
+	\item One document per window is enforced in SDI while child windows per document are
+	allowed in MDI.
+	\item MDI is a container control while SDI is not container control.
+	\item SDI contains one window only at a time but MDI contain multiple document at a time
+	appeared as child window.
+	\item MDI supports many interfaces means we can handle many applications at a time according to
+	user’s requirement. But SDI supports one interface means you can handle only
+	one application at a time.
+	\item For switching between documents MDI uses special interface inside the parent window
+	while SDI uses Task Manager for that.
+	\item In MDI grouping is implemented naturally but in SDI grouping is possible through special
+	window managers.
+	\item For maximizing all documents, parent window is maximized by MDI but in case of SDI it is
+	implemented through special code or window manager.
+	\item Switch focus to specific document can be easily handled while in MDI but it is difficult to
+	implement in SDI.
+\end{itemize}
+
+\subsubsection*{To create MDI child forms}
+Create a new Windows Forms project. In the Properties Windows for the form, set its
+\texttt{IsMdiContainer} property to true, and its \texttt{WindowsState} property to \texttt{Maximized}.
+This designates the form as an MDI container for child windows.
+
+
+\section{Dialog box ( Modal and Modeless )}
+
+\begin{itemize}
+	\item A dialog box is a type of window, which is used to enable common communication or dialog
+	between a computer and its user.
+	\item A dialog box is most often used to provide the user with the means for specifying how to
+	implement a command or to respond to a question.
+	\item Windows.Form is a base class
+\end{itemize}
+Dialog boxes are used to interact with the user and retrieve information. In simple terms, a dialog
+box is a form with its \texttt{FormBorderStyle} enumeration property set to \texttt{FixedDialog}. You can
+construct your own custom dialog boxes by using the Windows Forms Designer in Visual Studio.
+Add controls such as Label, \texttt{Textbox}, and Button to customize dialog boxes to your specific
+needs.
+
+The .NET Framework also includes predefined dialog boxes, such as File Open and message
+boxes, which you can adapt for your own applications. Dialog boxes are special forms that are non-re sizable. They are also used to display the messages to the user. The messages can be error
+messages, confirmation of the password, confirmation for the deletion of a particular record, Find-
+Replace utility of the word etc. There are standard dialog boxes to open and save a file, select a
+folder, print the documents, set the font or color for the text, etc.
+
+MessageBox class is used to display messages to the user. The show() method is used to display a
+message box with the specified text, caption, buttons and icon. There are other overloads also
+available.
+
+For example
+\begin{lstlisting}[numbers=none]
+DialogResult res = MessageBox.Show("Are you sure you want to Delete "," Confirmation ",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+	
+		if (res == DialogResult.OK) {
+			MessageBox.Show("You have clicked Ok Button");
+			//Some task...
+		}
+		if (res == DialogResult.Cancel) {
+			MessageBox.Show("You have clicked Cancel Button");
+			//Some task...
+		}	
+\end{lstlisting}
+Dialog boxes are of two types:
+\begin{enumerate}
+	\item Modal dialog box
+	\item Modeless dialog box
+\end{enumerate}
+
+\subsection{Modal dialog box}
+A dialog box that temporarily halts the application and the user cannot continue until the dialog has been closed is called \textit{modal dialog box}. The application may require some additional information
+before it can continue or may simply wish to confirm that the user wants to proceed with a
+potentially dangerous course of action. The application continues to execute only after the dialog
+box is closed; until then the application halts. For example, when saving a file, the user gives a
+name of an existing file; a warning is shown that a file with the same name exists, whether it should
+be overwritten or be saved with different name. The file will not be saved unless the user selects
+“OK” or “Cancel”.
+
+\subsection{Modeless dialog box}
+Another type of dialog box, which is used is a modeless dialog box. It is used when the requested
+information is not essential to continue, so the Window can be left open, while work continues
+somewhere else. For example, when working in a text editor, the user wants to find and replace a
+particular word. This can be done, using a dialog box, which asks for the word to be found and
+replaced. The user can continue to work, even if this box is open.
+
+\noindent \textbf{Note}: \emph{Model dialog is displayed, using \texttt{ShowDialog()} method. Modeless dialog boxes are displayed, using \texttt{Show()} method.}
+%
+%There are several built-in dialog boxes in Windows Forms. The built-in dialog boxes reduce the time and
+%work required for developing commonly used dialog boxes such as file open, file save and other dialog
+%boxes. Some of the dialog box controls are \verb*|OpenFileDialog|, \verb*|SaveFileDialog| and \verb*|FontDialog|.
+%
+%The \verb*|ShowDialog()| method is used to display the dialog box at run time. You can check the return value of
+%the \verb*|ShowDialog()| method (such as \verb*|DialogResult.OK| or \verb*|DialogResult.Cancel()| to retrieve the button clicked
+%by a user. The possible dialog box returns values from the method to the \verb*|DialogResult| enumeration as
+%follows:
+%
+%\begin{itemize}
+%	\item \verb*|Abort|: Returns an Abort value when the user clicks a button labeled \textbf{Abort}
+%	\item \verb*|Cancel|: Returns a Cancel value when the user clicks a button labeled \textbf{Cancel}
+%	\item \verb*|Ignore|: Returns an ignore value when the user clicks a button labeled \textbf{Ignore}
+%	\item \verb*|No|: Returns a No value when the user clicks a button labeled \textbf{No}
+%	\item \verb*|None|: Returns nothing. This means that the modal dialog box continues running
+%	\item \verb*|OK|: Returns an OK value when the user clicks a button labeled \textbf{OK}
+%	\item \verb*|Retry|: Returns a value when the user clicks a button labeled \textbf{Retry}
+%	\item \verb*|Yes|: Returns a value when the user clicks a button labeled \textbf{Yes}
+%\end{itemize}
+
+\section{Form Inheritance}
+Form inheritance, a feature of .NET that lets you create a base form that becomes the basis for
+creating more advanced forms. The new "derived" forms automatically inherit all the
+functionality contained in the base form. This design paradigm makes it easy to group common
+functionality and, in the process, reduce maintenance costs. When the base form is modified, the
+"derived" classes automatically follow suit and adopt the changes. The same concept applies to any
+type of object.
+
+Note In order to inherit from a form, the file or namespace containing that form must have been
+built into an executable file or DLL. To build the project, choose Build from the Build menu. Also,
+a reference to the namespace must be added to the class inheriting the form.
+
+\subsection*{To inherit a form programmatically}
+\begin{itemize}
+	\item In your class, add a reference to the namespace containing the form you wish to inherit from.
+	\item In the class definition, add a reference to the form to inherit from. The reference should
+	include the namespace that contains the form, followed by a period, then the name of the
+	base form itself.
+
+\begin{lstlisting}
+// Syntax: 
+public class CourseBCA : Faculty.ScienceAndTechnology
+\end{lstlisting}
+
+\end{itemize}
+When inheriting forms, keep in mind that issues may arise with regard to event handlers being
+called twice, because each event is being handled by both the base class and the inherited class.
+
+\section{Developing Custom, Composite controls}
+
+\subsection*{Composite Controls}
+A composite control is a collection of Windows Forms controls encapsulated in a common container. This kind of control is sometimes called a user control. The contained controls are called constituent controls.
+
+A composite control holds all of the inherent functionality associated with each of the contained Windows Forms controls and enables you to selectively expose and bind their properties. A composite control also provides a great deal of default keyboard handling functionality with no extra development effort on your part.
+
+For example, a composite control could be built to display customer address data from a database. This control would include a DataGridView control to display the database fields, a BindingSource to handle binding to a data source, and a BindingNavigator control to move through the records. You could selectively expose data binding properties, and you could package and reuse the entire control from application to application.
+
+\subsection*{Custom Controls}
+Another way to create a control is to create one substantially from the beginning by inheriting from Control. The Control class provides all of the basic functionality required by controls, including mouse and keyboard handling events, but no control-specific functionality or graphical interface.
+
+Creating a control by inheriting from the Control class requires much more thought and effort than inheriting from UserControl or an existing Windows Forms control. Because a great deal of implementation is left for you, your control can have greater flexibility than a composite or extended control, and you can tailor your control to suit your exact needs.
+\section{Field Validator Control}
+
+
+\section{Delegates in C\#}
+C\# delegates are similar to pointers to functions, in C or C++. A delegate is a reference type
+variable that holds the reference to a method. The reference can be changed at runtime.
+
+Delegates are especially used for implementing events and the call-back methods. All delegates are
+implicitly derived from the System.Delegate class.
+
+\subsection*{Declaring Delegates}
+Delegate declaration determines the methods that can be referenced by the delegate. A delegate can
+refer to a method, which has the same signature as that of the delegate.
+For example, consider a delegate:
+\begin{lstlisting}
+public delegate int MyDelegate (string s);
+\end{lstlisting}
+
+The preceding delegate can be used to reference any method that has a single string parameter and returns an int type variable. Syntax for delegate declaration is:
+
+\begin{lstlisting}
+delegate <return type> <delegate name> <parameter list>
+\end{lstlisting}
+
+\subsection*{Instantiating Delegates}
+nce a delegate type is declared, a delegate object must be created with the new keyword and be
+associated with a particular method. When creating a delegate, the argument passed to the new
+expression is written similar to a method call, but without the arguments to the method. For
+example
+\begin{lstlisting}
+	public delegate void printString(string s);
+	...
+	printString ps1 = new printString(WriteToScreen);
+	printString ps2 = new printString(WriteToFile);
+\end{lstlisting}
+
+Following example demonstrates declaration, instantiation, and use of a delegate that can be used to
+reference methods that take an integer parameter and returns an integer value.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=Delegate Example]{DelegateExample.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Events – Types and Handling}
+Events are user actions such as key press, clicks, mouse movements, etc., or some occurrence such
+as system generated notifications. Applications need to respond to events when they occur. For
+example, interrupts. Events are used for inter-process communication. Events can be marked as
+public, private, protected, internal, protected internal or private protected. These access modifiers
+define how users of the class can access the event.
+
+\subsection*{Using Delegates with Events(Handling Events)}
+The events are declared and raised in a class and associated with the event handlers using delegates
+within the same class or some other class. The class containing the event is used to publish the event. This is called the publisher class. Some other class that accepts this event is called the
+subscriber class. Events use the publisher-subscriber model.
+
+A publisher is an object that contains the definition of the event and the delegate. The event-
+delegate association is also defined in this object. A publisher class object invokes the event and it is
+notified to other objects.
+
+A subscriber is an object that accepts the event and provides an event handler. The delegate in the
+publisher class invokes the method (event handler) of the subscriber class.
+
+\subsection*{Declaring Events}
+To declare an event inside a class, first a delegate type for the event must be declared. For example,
+
+\begin{lstlisting}[numbers=none]
+public delegate string MyDel(string str);
+\end{lstlisting}
+
+Next, the event itself is declared, using the event keyword -
+\begin{lstlisting}[numbers=none]
+event MyDel MyEvent;
+\end{lstlisting}
+
+\noindent Example
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=Events Example]{EventsExample.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exception Handling}
+An exception is a problem that arises during the execution of a program. A C\# exception is a
+response to an exceptional circumstance that arises while a program is running, such as an attempt
+to divide by zero.
+
+Exceptions provide a way to transfer control from one part of a program to another. C\# exception
+handling is built upon four keywords: try, catch, finally, and throw.
+
+\begin{itemize}
+	\item \textbf{try} - A try block identifies a block of code for which particular exceptions is activated. It is
+	followed by one or more catch blocks.
+	\item \textbf{catch} - A program catches an exception with an exception handler at the place in a program
+	where you want to handle the problem. The catch keyword indicates the catching of an
+	exception.
+	\item \textbf{finally} - The finally block is used to execute a given set of statements, whether an exception
+	is thrown or not thrown. For example, if you open a file, it must be closed whether an
+	exception is raised or not.
+	\item \textbf{throw} - A program throws an exception when a problem shows up. This is done using a
+	throw keyword.
+\end{itemize}
+
+
+Assuming a block raises an exception, a method catches an exception using a combination of the try
+and catch keywords. A try/catch block is placed around the code that might generate an exception.
+Code within a try/catch block is referred to as protected code, and the syntax for using try/catch
+looks like the following
+
+\begin{lstlisting}[numbers=none]
+// Syntax	
+try {
+	// statements causing exception
+} catch (ExceptionName e1) {
+	// error handling code
+} catch (ExceptionName e2) {
+	// error handling code
+} catch (ExceptionName eN) {
+	// error handling code
+} finally {
+	// statements to be executed
+}
+\end{lstlisting}
+
+You can list down multiple catch statements to catch different type of exceptions in case your try
+block raises more than one exception in different situations.
+
+\subsection*{Handling Exceptions (Example)}
+C\# provides a structured solution to the exception handling in the form of try and catch blocks.
+Using these blocks the core program statements are separated from the error-handling statements.
+
+These error handling blocks are implemented using the try, catch, and finally keywords. Following
+is an example of throwing an exception when dividing by zero condition occurs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=Divide by zero exception]{ZeroDivideException.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Creating User-Defined Exceptions (Example)}
+You can also define your own exception. User-defined exception classes are derived from the
+Exception class. The following example demonstrates this.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[caption=User defined exception example]{UserDefinedException.cs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%SOURCE CODE END%%%%%%%%%%%%%%%%%%%%%%%
+

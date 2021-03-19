@@ -1,0 +1,19 @@
+<office>
+    <patients>
+        <name>ram</name>
+        <id>1</id>
+    </patients>
+    <patients>
+        <name>shyam</name>
+        <id>2</id>
+    </patients>
+    <medications>
+        <id>1</id>
+        <medication>massage</medication>
+    </medications>
+    <medications>
+        <id>2</id>
+        <medication>therapy</medication>
+    </medications>
+</office>
+

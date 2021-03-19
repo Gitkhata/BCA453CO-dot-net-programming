@@ -1,0 +1,210 @@
+
+%Style for 'Dot net programming'
+
+%-----------------------------------------
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{xltxtra}
+\usepackage{polyglossia}
+\usepackage{dirtytalk}
+
+\setdefaultlanguage{english}
+
+\setotherlanguage{hindi}
+\newfontfamily\devanagarifont[Script=Devanagari]{Shobhika} % Shobhika, Mukta, Kalimati, Lohit Devanagari, Lohit Nepali
+
+\defaultfontfeatures{Ligatures=TeX}
+
+
+\newcommand{\textnp}{\texthindi}
+\newenvironment{nepali}{\begin{hindi}}{\end{hindi}}
+
+%-----------------------------------------
+
+
+\usepackage{multicol}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage[toc]{appendix}
+\usepackage[hyphens]{url}
+\usepackage{graphicx}\graphicspath{{./graphics/}}  % include images/ graphics
+
+
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{amsmath, amsfonts}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage[raggedright]{titlesec} %prevent section from going past margin
+
+\usepackage{array,etoolbox}
+\setcounter{secnumdepth}{1} %document depth section, subsection aadi ko number hataune
+
+\usepackage{lscape} %make single page landscape
+% \usepackage{parskip} %do not indent paragraph
+% \usepackage{charter} %alternative to default latex font
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+
+% force all text to continue to the next line when using style=nextline in description lists with enumitem.
+
+
+%\usepackage[inline]{enumitem} %enumeration item
+\usepackage{longtable} % insert a very long table, which takes up two or more pages in your document
+\usepackage{wrapfig} % wrapfigure environment
+
+
+%Global setup. Local setup can be used
+\setlist[description]{
+%	style=nextline,
+	labelindent=10pt,%indent label
+	leftmargin=10pt, %indent description
+}
+
+\usepackage[Rejne]{fncychap}%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+
+% \usepackage{fancyhdr}
+
+\newcommand{\cs}{C\texttt{\#}} % Replace Hash \# symbol and make it look like sharp notation
+
+
+\raggedbottom
+
+%-----------------------------------------
+%		References
+%-----------------------------------------
+
+%use build option: biber or bibtex
+%stle options: ieee, numeric, alphabetic, apa, nature, science
+\usepackage[backend=biber, bibencoding=auto, style=apa, sorting=none,
+]{biblatex}
+\addbibresource{./references/c-sharp-references.bib}
+
+
+%-----------------------------------------
+%		TOC
+%-----------------------------------------
+\renewcommand*\contentsname{Table of Contents} %rename toc title
+\setcounter{secnumdepth}{5}
+%-----------------------------------------
+
+
+
+\usepackage{pdfpages} %allow inclusion of external pdf files
+
+%-----------------------------------------
+%		Table
+%-----------------------------------------
+\usepackage{booktabs}
+\usepackage{longtable} % insert a very long table, which takes up two or more pages in your document
+\usepackage{caption}
+\usepackage{array,etoolbox}
+\usepackage[skip=0.8\baselineskip]{caption}  %gap between caption and table
+%\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt} % table cell space
+\renewcommand{\arraystretch}{1.5} %table row gap
+% ------------------------------------------
+
+
+%-----------------------------------------
+%		Fancy header / footer
+%-----------------------------------------
+\usepackage{fancyhdr}\pagestyle{fancy} %for fancy headers and footers
+\fancyhf{}
+\fancyhead[RE]{\it{\uppercase{\leftmark}}}
+\fancyhead[LO]{\it{\uppercase{\rightmark}}}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+%-----------------------------------------
+
+
+%-----------------------------------------
+%		Source code listing
+%-----------------------------------------
+
+\usepackage{listings} %to display source code
+\usepackage{xcolor} % defining color
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%https://latexcolor.com/
+% new color for background
+%\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+
+\lstdefinestyle{cSharpStyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta}, %comment before printing
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple}, %comment before printing
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b, % position of caption (t/b)
+	keepspaces=true,
+	morekeywords={}, % Add any functions no included by default here separated by commas
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false, % Don't put marks in string spaces
+	showtabs=false,
+	tabsize=2,
+	extendedchars=true,
+	upquote=true, %for single quote
+	frame=lines, % showing frame outside code (none/leftline/topline/bottomline/lines/single/shadowbox
+	language=[Sharp]C %c-sharp language, C variant
+}
+\lstset{style=cSharpStyle}
+\lstset{inputpath=./source-code/} %source code folder inclusion
+%-----------------------------------------
+
+
+\lstdefinestyle{vb}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+%	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+%	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b, % position of caption (t/b)
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false, % Don't put marks in string spaces
+	showtabs=false,
+	tabsize=2,
+	upquote=true, %for single quote
+	frame=lines, % showing frame outside code (none/leftline/topline/bottomline/lines/single/shadowbox)
+	language={[Visual]Basic}
+}
+\lstset{inputpath=./source-code/} %source code folder inclusion
+%-----------------------------------------
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+
+%-----------------------------------------
+\usepackage{xurl} %break long urls
+\usepackage[linktoc=all]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,
+	urlcolor=black,
+	pdftitle={Dot Net Technology (BCA-VIII) : Purbanchal University, Nepal},
+	pdfauthor = {Jeevan Poudel},
+	plainpages=false, 	
+%	bookmarks=true,
+	breaklinks=true,
+	bookmarksnumbered=true,
+%	pdfpagelabels=true
+}
